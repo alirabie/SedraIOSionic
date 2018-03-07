@@ -59,7 +59,6 @@ export class HomePage {
 
 }
 
-//kkkkkkk
 
 getCities(id){
   return this.genrator.getCities(id).subscribe((data) => {

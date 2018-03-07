@@ -3,13 +3,13 @@
   <ion-header >
     <ion-toolbar color="primary" >
       <ion-title>
-        Menu
+        {{ 'PAGE_TITLE.menu' | translate }}
       </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <header-menu></header-menu>
   </ion-content>
-</ion-menu>
-
-<ion-nav [root]="rootPage" #content></ion-nav>
+  </ion-menu>
+  
+  <ion-nav [root]="rootPage" #content></ion-nav>

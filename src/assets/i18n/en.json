@@ -4,7 +4,10 @@
         "flowers" : "Flowers",
         "gifts" : "Gifts",
         "plnts" : "Plants",
-        "home" :"Home"
+        "home" :"Home",
+        "dilog":"SEDRA",
+        "login":"SignIn",
+        "menu":"Menu"
 
     },  
     "BUTTONS" : {
@@ -13,7 +16,9 @@
         "btn_login":"Login",
         "btn_signup":"SignUp",
         "btn_gust":"Guest",
-        "btn_filter":"Filter"
+        "btn_filter":"Filter",
+        "dissmiss":"Dismiss",
+        "back":"Back"
     },
 
 
@@ -23,6 +28,8 @@
     "LANG" :"Select App Language",
     "COUNTRY" : "Country",
     "CITY" : "City",
+    "USER":"Email",
+    "PASS":"Password",
     "NHOOD" : "District",
     "VINDOR" : "Shop",
     "CAT" :"Category",
