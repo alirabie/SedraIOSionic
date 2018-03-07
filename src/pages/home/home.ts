@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -17,10 +18,15 @@ export class HomePage {
   public districtsList=[];
   public viendorsList=[];
   public categoriesList=[];
-  cntry : any;
-  City : any ;
+  cntry : string ="";
+  City : string ="";
+  district :string ="" ;
   countryid : any;
   cityId : any;
+  vendor : string ="" ;
+  categoryId :string="";
+  cat : string ="";
+  myInput : String ="";
 
   
   constructor(public navCtrl: NavController, public genrator : GenratorProvider ,public loadingCtrl: LoadingController , public navParams: NavParams,private translate: TranslateService) {
@@ -53,6 +59,7 @@ export class HomePage {
 
 }
 
+//kkkkkkk
 
 getCities(id){
   return this.genrator.getCities(id).subscribe((data) => {
@@ -78,6 +85,10 @@ setCityid(id){
 }
 
 
+setCategoryId(id){
+  this.categoryId=id;
+}
+
 
 getVendors(){
   return this.genrator.getVindors(this.countryid,this.cityId).subscribe((data) => {
@@ -91,5 +102,29 @@ getCategories(){
     this.categoriesList=data['categories'];
 });
 }
+
+
+filter(){
+  let loader = this.loadingCtrl.create({
+    content: this.translate.instant('LOADING'),
+  });
+  loader.present();
+  return this.genrator.filterProducts(this.cntry,this.City,this.district,this.categoryId,this.vendor,this.myInput).subscribe((data) => {
+    this.productsList=data['products'];
+    this.cntry="";
+    this.City="";
+    this.district="";
+    this.vendor="";
+    this.categoryId="";
+    this.cat="";
+    
+    loader.dismiss();
+  },(err)=>{
+    loader.dismiss();
+
+  });
+}
+
+
 
 }

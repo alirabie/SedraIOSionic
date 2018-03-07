@@ -15,7 +15,7 @@
         }
     }
     
-    .tabs-ios {
+    .tabs{
       a[aria-selected=false]{
          .tab-button-icon[ng-reflect-name=cookies], .tab-button-icon[aria-label="categories"] {
           background-image: url(/assets/imgs/cookiesbtnunactive.png);

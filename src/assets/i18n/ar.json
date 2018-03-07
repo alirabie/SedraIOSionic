@@ -11,7 +11,8 @@
         "btn_cro" : "عربي",
         "btn_login":"تسجيل الدخول",
         "btn_signup":"حسساب جديد",
-        "btn_gust":"زائر"
+        "btn_gust":"زائر",
+        "btn_filter":"تصفيه"
 
     },
 
@@ -22,6 +23,7 @@
     "NHOOD" : "المنطقة",
     "VINDOR" : "المحل",
     "CAT" :"التصنيف",
+    "EMPTY":"لاتوجد منتجات",
     "IN_APP" : "Internal app translation",
     "FOO": "Foo {{test}}"
 }

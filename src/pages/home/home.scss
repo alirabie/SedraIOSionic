@@ -4,6 +4,7 @@ page-home {
         max-width: auto;
         max-height: 50%;
         text-align: center;
+       
       }
 
 
@@ -35,15 +36,24 @@ page-home {
 
 
       ion-select{
-        width: 50% ;
-      max-width: 50%;
-      display: flex;;
+        width: 23% ;
+      max-width: 23%;
+      display: flex;
       overflow: hidden;
-      font-size: 10pt;
+      font-size: 7pt;
       font-stretch: expanded;
       text-align: center;
      
     }
+    ion-label{
+    width: auto;
+    height: auto;
+    margin: auto; 
+    font-stretch: expanded;
+    text-align: center;
+    align-content: center ;
+    }
+
 
 
 

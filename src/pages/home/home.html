@@ -9,54 +9,56 @@
       </button>
     </ion-buttons>
     <ion-buttons left>
-        <button ion-button icon-only>
-            <ion-icon ios="ios-cart"></ion-icon>
-        </button>
-      </ion-buttons>
+      <button ion-button icon-only>
+        <ion-icon ios="ios-cart"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
+  <ion-searchbar color="primary" [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filter()" (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
   
-  <ion-item> 
 
-    <ion-select placeholder= "{{ 'NHOOD' | translate }}" interface="action-sheet" [(ngModel)]="district">
-      <ion-option *ngFor="let dis of districtsList" >{{dis.name}}</ion-option>
+  <ion-item>
+  
+    
+    <ion-select placeholder="{{ 'CAT' | translate }}" interface="popover" [(ngModel)]="cat">
+      <ion-option *ngFor="let cat of categoriesList" (ionSelect)="setCategoryId(cat.id)">{{cat.name}}</ion-option>
     </ion-select>
 
-    <ion-select placeholder="{{ 'CITY' | translate }}" interface="action-sheet" [(ngModel)]="City" >
-      <ion-option *ngFor="let city of citiesList" (ionSelect)="getDistricts()" (ionSelect)="setCityid(city.id)" (ionSelect)="getVendors()" >{{city.name}}</ion-option>
-    </ion-select>
+    <ion-select placeholder="{{ 'NHOOD' | translate }}" interface="popover" [(ngModel)]="district">
+        <ion-option *ngFor="let dis of districtsList">{{dis.name}}</ion-option>
 
-    <ion-select placeholder= "{{ 'COUNTRY' | translate }}" interface="action-sheet" [(ngModel)]="cntry" >
-      <ion-option *ngFor="let country of countriesList" (ionSelect)="getCities(country.id)" (ionSelect)="setCntryId(country.id)" >{{country.name}}</ion-option>
-    </ion-select>
-</ion-item>
-<ion-item>
+      </ion-select>
+      <ion-select placeholder="{{ 'VINDOR' | translate }}" interface="popover" [(ngModel)]="vendor">
+          <ion-option *ngFor="let vendor of viendorsList">{{vendor.name}}</ion-option>
+        </ion-select>
 
-  <ion-select placeholder="{{ 'VINDOR' | translate }}" interface="action-sheet" [(ngModel)]="vendor">
-    <ion-option *ngFor="let vendor of viendorsList" >{{vendor.name}}</ion-option>
-  </ion-select>
+    <ion-select placeholder="{{ 'CITY' | translate }}" interface="popover" [(ngModel)]="City">
+        <ion-option *ngFor="let city of citiesList" (ionSelect)="getDistricts()" (ionSelect)="setCityid(city.id)" (ionSelect)="getVendors()">{{city.name}}</ion-option>
+      </ion-select>
 
-  <ion-select placeholder="{{ 'CAT' | translate }}" interface="action-sheet" [(ngModel)]="hour">
-    <ion-option *ngFor="let cat of categoriesList" >{{cat.name}}</ion-option>
-  </ion-select>
+    <ion-select placeholder="{{ 'COUNTRY' | translate }}" interface="popover" [(ngModel)]="cntry">
+        <ion-option *ngFor="let country of countriesList" (ionSelect)="getCities(country.id)" (ionSelect)="setCntryId(country.id)">{{country.name}}</ion-option>
+      </ion-select>
 
-</ion-item>
+  </ion-item>
+
+  <button left  ion-button small (click)="filter()"> {{ 'BUTTONS.btn_filter' | translate }}</button>
 
   
   
 
 </ion-header>
-<ion-content class="grid-full">
-
-      <ion-row responsive-sm>
-          <ion-col  *ngFor="let product of productsList" class="cell-1">
-
-              <ion-card>
-                  <img  (click)="click()"  height="100 px" width="100 px" *ngFor="let image of product.images" [src]="image.src"/>
-                  <div class="card-title">{{ product.price }} SR</div>
-                </ion-card>
-              
-          </ion-col>
-        </ion-row>
-
+<ion-content  class="grid-full">
+    <ion-label *ngIf="productsList.length === 0">{{ 'EMPTY' | translate }}</ion-label>
+  <ion-row center responsive-sm>
+    <ion-col *ngFor="let product of productsList"  class="cell-1" >
+      <ion-card>
+        <img (click)="click()" height="100 px" width="100 px" *ngFor="let image of product.images" [src]="image.src" />
+        <div class="card-title">{{ product.price }} SR</div>
+      </ion-card>
+    </ion-col>  
+  </ion-row>
 </ion-content>

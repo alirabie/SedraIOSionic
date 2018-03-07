@@ -57,4 +57,10 @@ export class GenratorProvider {
     return this.http.get(this.url+"api/categories?fields=id,name").map((res : Response)=>res.json());
   }
 
+
+  filterProducts(country,state,district,category,vendor,serchKey){
+    return this.http.get(this.url+"/api/products?country="+country+"&state="+state+"&district="+district+"&category_id="+category+"&vendor_name="+vendor+"&searchKeyword="+serchKey).map((res : Response)=>res.json());
+
+  }
+
 }

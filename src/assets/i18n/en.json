@@ -12,7 +12,8 @@
         "btn_cro" : "Croatian",
         "btn_login":"Login",
         "btn_signup":"SignUp",
-        "btn_gust":"Guest"
+        "btn_gust":"Guest",
+        "btn_filter":"Filter"
     },
 
 
@@ -25,6 +26,7 @@
     "NHOOD" : "District",
     "VINDOR" : "Shop",
     "CAT" :"Category",
+    "EMPTY":"No Products",
     "IN_APP" : "Internal app translation",
     "FOO": "Foo {{test}}"
 }
