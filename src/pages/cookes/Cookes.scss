@@ -1,4 +1,4 @@
-page-home {
+page-cookes {
     .grid-full ion-col {
         flex: 0 0 50%;
         max-width: auto;
@@ -32,21 +32,4 @@ page-home {
         width: 100%;
         color: #fff;
       }
-
-
-      ion-select{
-        width: 50% ;
-      max-width: 50%;
-      display: flex;;
-      overflow: hidden;
-      font-size: 10pt;
-      font-stretch: expanded;
-      text-align: center;
-     
-    }
-
-
-
-
-   
 }

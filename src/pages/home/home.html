@@ -1,17 +1,62 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>
+      {{ 'PAGE_TITLE.home' | translate }}
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons left>
+        <button ion-button icon-only>
+            <ion-icon ios="ios-cart"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  
+  <ion-item> 
+
+    <ion-select placeholder= "{{ 'NHOOD' | translate }}" interface="action-sheet" [(ngModel)]="district">
+      <ion-option *ngFor="let dis of districtsList" >{{dis.name}}</ion-option>
+    </ion-select>
+
+    <ion-select placeholder="{{ 'CITY' | translate }}" interface="action-sheet" [(ngModel)]="City" >
+      <ion-option *ngFor="let city of citiesList" (ionSelect)="getDistricts()" (ionSelect)="setCityid(city.id)" (ionSelect)="getVendors()" >{{city.name}}</ion-option>
+    </ion-select>
+
+    <ion-select placeholder= "{{ 'COUNTRY' | translate }}" interface="action-sheet" [(ngModel)]="cntry" >
+      <ion-option *ngFor="let country of countriesList" (ionSelect)="getCities(country.id)" (ionSelect)="setCntryId(country.id)" >{{country.name}}</ion-option>
+    </ion-select>
+</ion-item>
+<ion-item>
+
+  <ion-select placeholder="{{ 'VINDOR' | translate }}" interface="action-sheet" [(ngModel)]="vendor">
+    <ion-option *ngFor="let vendor of viendorsList" >{{vendor.name}}</ion-option>
+  </ion-select>
+
+  <ion-select placeholder="{{ 'CAT' | translate }}" interface="action-sheet" [(ngModel)]="hour">
+    <ion-option *ngFor="let cat of categoriesList" >{{cat.name}}</ion-option>
+  </ion-select>
+
+</ion-item>
+
+  
+  
+
+</ion-header>
+<ion-content class="grid-full">
+
+      <ion-row responsive-sm>
+          <ion-col  *ngFor="let product of productsList" class="cell-1">
+
+              <ion-card>
+                  <img  (click)="click()"  height="100 px" width="100 px" *ngFor="let image of product.images" [src]="image.src"/>
+                  <div class="card-title">{{ product.price }} SR</div>
+                </ion-card>
+              
+          </ion-col>
+        </ion-row>
+
 </ion-content>

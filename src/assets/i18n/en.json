@@ -1,0 +1,30 @@
+{
+    "PAGE_TITLE" :{
+        "coockes" : "Cookes",
+        "flowers" : "Flowers",
+        "gifts" : "Gifts",
+        "plnts" : "Plants",
+        "home" :"Home"
+
+    },  
+    "BUTTONS" : {
+        "btn_eng" : "English",
+        "btn_cro" : "Croatian",
+        "btn_login":"Login",
+        "btn_signup":"SignUp",
+        "btn_gust":"Guest"
+    },
+
+
+
+
+    "LOADING" :"Please wait...",
+    "LANG" :"Select App Language",
+    "COUNTRY" : "Country",
+    "CITY" : "City",
+    "NHOOD" : "District",
+    "VINDOR" : "Shop",
+    "CAT" :"Category",
+    "IN_APP" : "Internal app translation",
+    "FOO": "Foo {{test}}"
+}

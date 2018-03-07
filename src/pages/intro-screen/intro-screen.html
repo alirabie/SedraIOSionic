@@ -1,0 +1,33 @@
+
+
+
+
+
+<ion-content class="background" padding>
+     
+    <ion-item color="primary" >
+        <ion-label >{{ 'LANG' | translate }}</ion-label>
+        <ion-select [(ngModel)]="language" interface="action-sheet" (ionChange)="onChange($event)">
+          <ion-option value="ar">عربي</ion-option>
+          <ion-option value="en">English</ion-option>
+        </ion-select>
+      </ion-item>    
+
+</ion-content>
+
+<ion-footer no-shadow>
+    <div class="row"> 
+    
+        <div class="col col-50"> 
+            <button ion-button color="light" outline (click)="login()">{{ 'BUTTONS.btn_login' | translate }}</button>
+        </div>
+        
+        <div class="col col-50"> 
+            <button ion-button color="light" outline (click)="signUp()">{{ 'BUTTONS.btn_signup' | translate }}</button>
+          </div>
+        
+        <div class="col col-50"> 
+            <button ion-button color="light" outline (click)="gust()">{{ 'BUTTONS.btn_gust' | translate }}</button>
+            </div>
+          </div>
+</ion-footer>

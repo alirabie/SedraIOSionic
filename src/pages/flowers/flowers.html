@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+        {{ 'PAGE_TITLE.flowers' | translate }}
+      </ion-title>
+      <ion-buttons right>
+        <button ion-button icon-only menuToggle>
+          <ion-icon name='menu'></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-buttons left>
+          <button ion-button icon-only>
+              <ion-icon ios="ios-cart"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content class="grid-full">
+      
+      <!-- <ion-card  *ngFor="let product of productsList">
+          <img  (click)="click()"  class="displayed"  height="200 px" width="100 px" *ngFor="let image of product.images" [src]="image.src"/>
+          <ion-card-content>
+            <ion-card-title>
+                {{product.name}}
+              </ion-card-title>
+            <p>
+                {{product.price}} SR
+            </p>
+          </ion-card-content>
+        </ion-card> -->
+  
+  
+        <ion-row responsive-sm>
+            <ion-col  *ngFor="let product of productsList" class="cell-1">
+  
+                <ion-card>
+                    <img  (click)="click()"  height="100 px" width="100 px" *ngFor="let image of product.images" [src]="image.src"/>
+                    <div class="card-title">{{ product.price }} SR</div>
+                  </ion-card>
+                
+            </ion-col>
+          </ion-row>
+          
+  
+  
+          
+  
+  
+  
+  
+  
+  
+  
+  </ion-content>
+  

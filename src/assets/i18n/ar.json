@@ -1,0 +1,27 @@
+{
+    "PAGE_TITLE" :{
+        "coockes" : "حلوى",
+        "flowers" : "ورود",
+        "gifts" : "هدايا",
+        "plnts" : "نباتات",
+        "home" :"الرئيسية"
+    },  
+    "BUTTONS" : {
+        "btn_eng" : "English",
+        "btn_cro" : "عربي",
+        "btn_login":"تسجيل الدخول",
+        "btn_signup":"حسساب جديد",
+        "btn_gust":"زائر"
+
+    },
+
+    "LOADING" :"من فضلك انتظر ...",
+    "LANG" :"أختر لغة التطبيق",
+    "COUNTRY" : "الدولة",
+    "CITY" : "المدينة",
+    "NHOOD" : "المنطقة",
+    "VINDOR" : "المحل",
+    "CAT" :"التصنيف",
+    "IN_APP" : "Internal app translation",
+    "FOO": "Foo {{test}}"
+}
