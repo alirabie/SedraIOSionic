@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+
+
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="header-banner">
+    <ion-slides pager="true" options="{pagination: true}" autoplay="5000" loop="true" speed="500" *ngFor="let product of productInfo">
+      <ion-slide *ngFor="let image of product.images">
+        <img class="img" height="100 px" width="100 px" [src]="image.src">
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="price-bar">
+
+    <ion-item class="price-bar" *ngFor="let product of productInfo">
+
+      
+        
+        <div>
+          {{product.price}} SR
+        </div>
+
+   
+    </ion-item>
+
+  </div>
+
+  <div>
+    <p padding class="text" *ngFor="let product of productInfo">
+      {{product.full_description}}
+    </p>
+  </div>
+
+
+
+
+
+
+</ion-content>

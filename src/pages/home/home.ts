@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , LoadingController } from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
+import { ProductInfoPage } from '../product-info/product-info'
 
 
 
@@ -124,6 +125,14 @@ filter(){
   });
 }
 
+
+goProductInfo(id,name){
+  this.navCtrl.push( ProductInfoPage, {
+    productId: id,
+    prouductName: name
+  });
+ 
+}
 
 
 }

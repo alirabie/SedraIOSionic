@@ -65,6 +65,12 @@ export class GenratorProvider {
 
 
 
+
+  getProudctInfo(id){
+    return this.http.get(this.url+"api/products/"+id).map((res : Response)=>res.json());
+  }
+
+
   login(credentials) {
     return new Promise((resolve, reject) => {
         let headers = new Headers();

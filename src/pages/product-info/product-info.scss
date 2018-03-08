@@ -1,0 +1,45 @@
+page-product-info {
+    .header-banner{
+		
+        height:200px;
+        min-height:300px;
+        
+	}
+
+	.slide-zoom {
+		// height:200px;
+        height: 100%;
+        width: 100%;
+		// overflow:hidden;
+    }
+    ion-slides {
+        height: 300px;
+        width: 100%;
+       
+     }
+
+     .img{
+        width: 100vw;
+        overflow: visible;
+        width: 100%;
+     }
+     .text{
+         text-align: center;
+         text-decoration: olive;
+         text-decoration-style: solid;
+         text-overflow: clip;
+     }
+
+     .price-bar{
+         width: 100vw;
+         height: 30pt;
+         background: #b1925a;
+         text-align: center;
+         color:oldlace
+     }
+
+    
+
+
+    
+}
