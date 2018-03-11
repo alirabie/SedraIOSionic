@@ -86,10 +86,23 @@ export class GenratorProvider {
   }
 
 
+  addToWishlist(productId,custId){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.url+"api/wishlist/add?productId="+productId+"&shoppingCartTypeId=2&quantity=1&customerId="+custId,{headers : headers}).map((res : Response)=>res.json());
+  }
 
 
+  removeFromWishlist(productId,custId){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.url+"api/wishlist/delete/?itemId="+productId+"&shoppingCartTypeId=2&quantity=1&customerId="+custId,{headers : headers}).map((res : Response)=>res.json());
+  }
 
 
+  getRelatedProducts(id){
+    return this.http.get(this.url+"api/products/related/"+id).map((res : Response)=>res.json());
+  }
 
 
 

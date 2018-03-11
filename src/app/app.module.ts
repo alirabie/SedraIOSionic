@@ -6,7 +6,6 @@ import { CookesPage } from '../pages/cookes/cookes';
 import { GiftsPage } from '../pages/gifts/gifts';
 import { FlowersPage } from '../pages/flowers/flowers';
 import { TabsPage } from '../pages/tabs/tabs';
-import { HeaderMenuComponent } from '../components/header-menu/header-menu';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PlantsPage } from '../pages/plants/plants'
@@ -34,8 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PlantsPage,
     TabsPage,
     IntroScreenPage,
-    HeaderMenuComponent,
-    SignInPage,
+     SignInPage,
     SignUpPage,
     HomePage,
     ProductInfoPage

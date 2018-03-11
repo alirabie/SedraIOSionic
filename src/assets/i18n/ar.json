@@ -31,6 +31,8 @@
     "VINDOR" : "المحل",
     "CAT" :"التصنيف",
     "EMPTY":"لاتوجد منتجات",
+    "FAVADD":"تم الاضافة الى المفضله",
+    "VIEW":"عرض",
     "IN_APP" : "Internal app translation",
     "FOO": "Foo {{test}}"
 }

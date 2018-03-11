@@ -19,19 +19,25 @@
     </ion-slides>
   </div>
 
-  <div class="price-bar">
+  <div  class="price-bar"  *ngFor="let product of productInfo">
 
-    <ion-item class="price-bar" *ngFor="let product of productInfo">
 
-      
-        
-        <div>
-          {{product.price}} SR
-        </div>
+      <ion-row justify-content-center align-items-center style="height: 100%">
+          <ion-col width-50>
+                {{product.price}} SR
+          </ion-col>
 
-   
-    </ion-item>
+          <ion-col width-50>
+           
+                <button #myButton ion-button icon-only (click)="toggleIcon()">
+                    <ion-icon [name]="buttonIcon"></ion-icon>
+                  </button>
+           
+          </ion-col>
+      </ion-row>
 
+
+    
   </div>
 
   <div>
@@ -42,6 +48,16 @@
 
 
 
+  <ion-list>
+      <ion-item *ngFor="let product of relatedProducts">
+        <ion-thumbnail  item-start>
+          <img *ngFor="let image of product.images" [src]="image.src">
+        </ion-thumbnail>
+        <h2>{{product.name}}</h2>
+        <p>{{product.price}} SR</p>
+        <button ion-button clear item-end (click)="goRelatedProduct(product.id,product.name)">{{ 'VIEW' | translate }}</button>
+      </ion-item>
+    </ion-list>
 
 
 

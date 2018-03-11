@@ -19,6 +19,7 @@ export class IntroScreenPage {
   constructor(public navCtrl: NavController, public navParams: NavParams ,public translate: TranslateService) {
    
    translate.use("ar");
+   this.checkLoginStatus();
    
   }
 
@@ -45,6 +46,16 @@ export class IntroScreenPage {
     this.translate.use(e);
 }
 
+
+checkLoginStatus(){
+
+  if (localStorage.getItem('customerid') === "") {
+
+  }else{
+    this.translate.use("ar");
+    this.navCtrl.push(TabsPage);
+  }
+}
 
 
 }

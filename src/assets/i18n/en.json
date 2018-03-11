@@ -34,6 +34,8 @@
     "VINDOR" : "Shop",
     "CAT" :"Category",
     "EMPTY":"No Products",
+    "FAVADD":"Added to Favorite",
+    "VIEW":"View",
     "IN_APP" : "Internal app translation",
     "FOO": "Foo {{test}}"
 }
