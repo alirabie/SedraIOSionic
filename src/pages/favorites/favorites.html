@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ 'FAV' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-label *ngIf="favoritesList.length === 0">{{ 'EMPTY' | translate }}</ion-label>
+
+
+  <ion-list>
+    <ion-item *ngFor="let product of favoritesList">
+      <ion-thumbnail item-start>
+        <img src="https://cdn1.iconfinder.com/data/icons/e-commerce-set-1-1/256/Favorite-512.png">
+      </ion-thumbnail>
+      <h2>{{product.ProductName}}</h2>
+      <p>{{product.UnitPrice}}</p>
+      <button ion-button clear item-end (click)="goPInfo(product.ProductId,product.ProductName)">{{ 'VIEW' | translate }}</button>
+      <button ion-button icon-only item-end (click)="delete(product.Id)">
+        <ion-icon class="delico" name="trash"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -105,5 +105,10 @@ export class GenratorProvider {
   }
 
 
+  getCustomerWishlist(id){
+    return this.http.get(this.url+"api/wishlist/"+id).map((res : Response)=>res.json());
+  }
+
+
 
 }

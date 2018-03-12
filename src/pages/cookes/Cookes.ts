@@ -3,6 +3,7 @@ import { NavController , LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
+import { ProductInfoPage } from '../product-info/product-info'
 
 @Component({
   selector: 'page-cookes',
@@ -28,6 +29,14 @@ export class CookesPage {
     return this.genrator.getProductsById(3).subscribe((data) => {
       this.productsList=data['products'];
       loader.dismiss();
+    });
+  }
+
+
+  goProductInfo(id,name){
+    this.navCtrl.push( ProductInfoPage, {
+      productId: id,
+      prouductName: name
     });
   }
 

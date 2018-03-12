@@ -85,7 +85,6 @@ getRelatedProducts(){
 
 
 goRelatedProduct(id,name){
-
   this.navCtrl.push( ProductInfoPage, {
     productId: id,
     prouductName: name

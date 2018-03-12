@@ -33,6 +33,8 @@
     "EMPTY":"لاتوجد منتجات",
     "FAVADD":"تم الاضافة الى المفضله",
     "VIEW":"عرض",
+    "FAV":"مفضلتى",
     "IN_APP" : "Internal app translation",
+   
     "FOO": "Foo {{test}}"
 }

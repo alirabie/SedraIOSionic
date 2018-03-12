@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { IntroScreenPage } from '../pages/intro-screen/intro-screen'
 import { TranslateService } from '@ngx-translate/core';
+import { FavoritesPage } from '../pages/favorites/favorites'
+import { SignInPage } from '../pages/sign-in/sign-in'
 
 @Component({
   templateUrl: 'app.html'
@@ -36,7 +38,24 @@ export class MyApp {
 
 
 
-  
+     //Side menue 
+
+  //Favorites
+  goFavoritesPage(){
+
+    //Check if user loged in or not 
+    if (localStorage.getItem('customerid') === ""){
+      this.nav.push( SignInPage );
+      this.menuCtrl.toggle();
+    }else{
+      this.nav.push( FavoritesPage );
+      this.menuCtrl.toggle();
+    }
+    
+  }
+
+
+  //Logout
   logout(){
     localStorage.setItem('customerid',"")
     this.nav.popToRoot();

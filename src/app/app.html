@@ -1,46 +1,64 @@
-
 <ion-menu side="right" [content]="content">
-  <ion-header >
-    <ion-toolbar color="primary" >
+  <ion-header>
+    <ion-toolbar color="primary">
       <ion-title>
         {{ 'PAGE_TITLE.menu' | translate }}
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-      <ion-list>
-          <button ion-item>
-            <ion-icon name="cart" item-start></ion-icon>
-            Shopping
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="medical" item-start></ion-icon>
-            Hospital
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="cafe" item-start></ion-icon>
-            Cafe
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="paw" item-start></ion-icon>
-            Dog Park
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="beer" item-start></ion-icon>
-            Pub
-          </button>
-      
-          <button ion-item (click)="logout()" >
-            <ion-icon name="beer"  item-start></ion-icon>
-            Logout
-          </button>
-      
-        </ion-list>
+  <ion-content >
+    <ion-list>
+      <button ion-item detail-none class="sidemenu">
+        <ion-icon name="home" item-end></ion-icon>
+        <h2>Home</h2>
+      </button>
+
+      <button ion-item detail-none class="sidemenu">
+        <ion-icon name="cog" item-end></ion-icon>
+        <h2>Settings</h2>
+      </button>
+
+      <button ion-item detail-none class="sidemenu">
+        <ion-icon name="ios-contact" item-end></ion-icon>
+        <h2>Account</h2>
+      </button>
+
+      <button ion-item detail-none class="sidemenu">
+        <ion-icon name="ios-basket" item-end></ion-icon>
+        <h2>Basket</h2>
+      </button>
+
+      <button ion-item detail-none class="sidemenu">
+        <ion-icon name="ios-pricetags" item-end></ion-icon>
+        <h2>Discounted Products</h2>
+      </button>
+
+
+      <button ion-item detail-none class="sidemenu" (click)="goFavoritesPage()">
+        <ion-icon name="heart" item-end></ion-icon>
+        <h2>Favorites</h2>
+      </button>
+
+
+      <button ion-item detail-none class="sidemenu">
+        <ion-icon name="ios-people" item-end></ion-icon>
+        <h2>Contact Us</h2>
+      </button>
+
+
+      <button ion-item detail-none class="sidemenu">
+        <ion-icon name="ios-mail" item-end></ion-icon>
+        <h2>Contact Us</h2>
+      </button>
+
+
+      <button ion-item detail-none class="sidemenu" (click)="logout()">
+        <ion-icon name="ios-log-out" item-end></ion-icon>
+        <h2>Logout</h2>
+      </button>
+
+    </ion-list>
   </ion-content>
-  </ion-menu>
-  
-  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

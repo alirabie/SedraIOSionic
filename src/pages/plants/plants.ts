@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
+import { ProductInfoPage } from '../product-info/product-info'
 
 
 @IonicPage()
@@ -34,4 +35,13 @@ export class PlantsPage {
       loader.dismiss();
     });
   }
+
+
+  goProductInfo(id,name){
+    this.navCtrl.push( ProductInfoPage, {
+      productId: id,
+      prouductName: name
+    });
+  }
+
 }

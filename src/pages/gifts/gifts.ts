@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController , LoadingController } from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
+import { ProductInfoPage } from '../product-info/product-info'
 
 @Component({
   selector: 'page-gifts',
@@ -24,6 +25,15 @@ export class GiftsPage {
     return this.genrator.getProductsById(2).subscribe((data) => {
       this.productsList=data['products'];
       loader.dismiss();
+    });
+  }
+
+
+
+  goProductInfo(id,name){
+    this.navCtrl.push( ProductInfoPage, {
+      productId: id,
+      prouductName: name
     });
   }
 

@@ -36,6 +36,7 @@
     "EMPTY":"No Products",
     "FAVADD":"Added to Favorite",
     "VIEW":"View",
+    "FAV":"My Favorites",
     "IN_APP" : "Internal app translation",
     "FOO": "Foo {{test}}"
 }

@@ -19,6 +19,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomePage } from '../pages/home/home'
 import { ProductInfoPage } from '../pages/product-info/product-info'
+import { FavoritesPage } from '../pages/favorites/favorites'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
      SignInPage,
     SignUpPage,
     HomePage,
-    ProductInfoPage
+    ProductInfoPage,
+    FavoritesPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignInPage,
     SignUpPage,
     HomePage ,
-    ProductInfoPage
+    ProductInfoPage ,
+    FavoritesPage
   ],
   providers: [
     StatusBar,
