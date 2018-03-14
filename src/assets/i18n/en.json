@@ -7,7 +7,8 @@
         "home" :"Home",
         "dilog":"SEDRA",
         "login":"SignIn",
-        "menu":"Menu"
+        "menu":"Menu",
+        "cart":"Shopping Cart"
 
     },  
     "BUTTONS" : {
@@ -37,6 +38,10 @@
     "FAVADD":"Added to Favorite",
     "VIEW":"View",
     "FAV":"My Favorites",
+    "ADEDD" :"Item has been Added to Shopping Cart",
+    "CONTINE":"Continue Shopping",
+    "END":"Checkout",
     "IN_APP" : "Internal app translation",
+    "DEL":"Delete Product",
     "FOO": "Foo {{test}}"
 }

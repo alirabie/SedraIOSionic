@@ -110,6 +110,27 @@ export class GenratorProvider {
   }
 
 
+  addToShoppingCart(data) {
+    return new Promise((resolve, reject) => {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http.post(this.url+'api/shopping_cart_items', JSON.stringify(data), {headers: headers})
+          .subscribe(res => {
+            resolve(res.json());
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+
+
+  getShoppingCartItems(customerId){
+    return this.http.get(this.url+"api/shopping_cart_items/"+customerId).map((res : Response)=>res.json());
+  }
  
+
+  deleteFromShoppingCart(id){
+    return this.http.delete(this.url+"api/shopping_cart_items/"+id).map((res : Response)=>res.json());
+  }
 
 }

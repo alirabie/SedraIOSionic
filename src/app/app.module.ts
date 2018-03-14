@@ -21,6 +21,7 @@ import { HomePage } from '../pages/home/home'
 import { ProductInfoPage } from '../pages/product-info/product-info'
 import { FavoritesPage } from '../pages/favorites/favorites'
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignUpPage,
     HomePage,
     ProductInfoPage,
-    FavoritesPage 
+    FavoritesPage ,
+    ShoppingCartPage
    
   ],
   imports: [
@@ -68,7 +70,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignUpPage,
     HomePage ,
     ProductInfoPage ,
-    FavoritesPage
+    FavoritesPage ,
+    ShoppingCartPage
   ],
   providers: [
     StatusBar,

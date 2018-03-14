@@ -4,6 +4,7 @@ import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
 import { SignInPage } from '../sign-in/sign-in'
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { ShoppingCartPage } from '../shopping-cart/shopping-cart';
 
 
 @IonicPage()
@@ -12,16 +13,19 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   templateUrl: 'product-info.html',
 })
 export class ProductInfoPage {
-
-  count = 1 ;
-
-
+  count = 1;
   id: String = "";
   name: string = "";
   productInfo = [];
   relatedProducts = [];
 
   buttonIcon: string = "heart";
+
+
+
+
+
+
 
 
 
@@ -36,11 +40,13 @@ export class ProductInfoPage {
     public SocialSharing: SocialSharing) {
 
 
+
     this.id = this.navParams.get("productId");
     this.name = this.navParams.get("prouductName");
     this.getProductInf();
     this.getRelatedProducts();
     config.set('ios', 'backButtonText', this.translate.instant('BUTTONS.back'));
+
   }
 
   ionViewDidLoad() {
@@ -99,7 +105,7 @@ export class ProductInfoPage {
 
 
     let st: string = encodeURIComponent(this.name.replace(' ', '-'))
-    this.SocialSharing.share("http://sedragift.com/"+st).then(() => {
+    this.SocialSharing.share("http://sedragift.com/" + st).then(() => {
       console.log("shareSheetShare: Success");
     }).catch((err) => {
       console.error("shareSheetShare: failed");
@@ -107,18 +113,94 @@ export class ProductInfoPage {
   }
 
 
-  up(){
+  up() {
     this.count++;
   }
 
-  dwon(){
-    if(this.count<=1){
+  dwon() {
+    if (this.count <= 1) {
       return;
-    }else{
+    } else {
       this.count--;
     }
   }
 
 
+  addToCart() {
+
+
+    if (localStorage.getItem("customerid") === "") {
+
+      this.navCtrl.push(SignInPage);
+    } else {
+
+      let cartItem = {
+        shopping_cart_item: {
+          id: "null",
+          customer_entered_price: "0",
+          quantity: "0",
+          created_on_utc: "2017-06-13T16:15:47-04:00",
+          updated_on_utc: "2017-06-13T16:15:47-04:00",
+          shopping_cart_type: "1",
+          product_id: '0',
+          customer_id: '0'
+        }
+      }
+      cartItem.shopping_cart_item.quantity = this.count + "";
+      cartItem.shopping_cart_item.product_id = this.id + "";
+      cartItem.shopping_cart_item.customer_id = localStorage.getItem("customerid");
+
+      this.genrator.addToShoppingCart(cartItem).then((result) => {
+
+        if (result['shopping_carts'] != null) {
+
+          this.getShoppingCartCount(localStorage.getItem("customerid"));
+
+        
+
+          let alert = this.alertCtrl.create({
+            title: this.translate.instant('PAGE_TITLE.dilog'),
+            subTitle: this.translate.instant('ADEDD'),
+            buttons: [
+              {
+                text: this.translate.instant('CONTINE'),
+                handler: () => {
+                  //ٌResume Shopping
+                  this.navCtrl.popToRoot();
+
+                  console.log(localStorage.getItem("cartCount"))
+                }
+              },
+              {
+                text: this.translate.instant('END'),
+                handler: () => {
+
+                  //Go to shopping cart
+                  this.navCtrl.push(ShoppingCartPage);
+                }
+              }
+            ]
+          });
+          alert.present();
+
+          console.log(result);
+        }
+
+      }, (err) => {
+
+        console.log(err);
+
+      });
+    }
+  }
+
+
+
+  getShoppingCartCount(custId) {
+    this.genrator.getShoppingCartItems(custId).subscribe((data) => {
+      let items  = data['shopping_carts'];
+      localStorage.setItem("cartCount", items.length + "");
+    });
+  }
 
 }

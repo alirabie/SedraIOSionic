@@ -1,0 +1,24 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title> {{ 'PAGE_TITLE.cart' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+    <ion-label class="lbl" *ngIf="cartItemsList.length === 0">{{ 'EMPTY' | translate }}</ion-label>
+  <ion-list>
+    <ion-item *ngFor="let item of cartItemsList">
+      <ion-thumbnail item-start>
+        <img src="/assets/imgs/imagesize.png">
+      </ion-thumbnail>
+      <h2>{{item.product.name}} </h2>
+      <p>{{item.product.price*item.quantity}} SR</p>
+      <button ion-button clear item-end (click)="delItem(item.id)">{{ 'DEL' | translate }}</button>
+      #{{item.quantity}}
+    </ion-item>
+  </ion-list>
+</ion-content>
