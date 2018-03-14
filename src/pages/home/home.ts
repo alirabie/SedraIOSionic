@@ -28,6 +28,7 @@ export class HomePage {
   categoryId :string="";
   cat : string ="";
   myInput : String ="";
+  badgeValue = null;
 
   
   constructor(public navCtrl: NavController, public genrator : GenratorProvider ,public loadingCtrl: LoadingController , public navParams: NavParams,private translate: TranslateService) {
@@ -117,6 +118,7 @@ filter(){
     this.vendor="";
     this.categoryId="";
     this.cat="";
+    
     
     loader.dismiss();
   },(err)=>{

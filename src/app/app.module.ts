@@ -20,6 +20,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomePage } from '../pages/home/home'
 import { ProductInfoPage } from '../pages/product-info/product-info'
 import { FavoritesPage } from '../pages/favorites/favorites'
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignUpPage,
     HomePage,
     ProductInfoPage,
-    FavoritesPage
+    FavoritesPage 
+   
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     StatusBar,
+    SocialSharing,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GenratorProvider

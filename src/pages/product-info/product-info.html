@@ -1,7 +1,16 @@
 <ion-header>
 
   <ion-navbar color="primary">
+   
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="share()">
+          <ion-icon ios="ios-share-outline" md="md-share" ></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>{{name}}</ion-title>
+
   </ion-navbar>
 
 
@@ -23,10 +32,18 @@
 
 
       <ion-row justify-content-center align-items-center style="height: 100%">
-          <ion-col width-50>
-                {{product.price}} SR
-          </ion-col>
+         
 
+          <button ion-button icon-only (click)="up()">
+              <ion-icon ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon>
+          </button>
+          {{count}} 
+          <button ion-button icon-only (click)="dwon()">
+              <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+          </button>
+          <ion-col width-50>
+              {{count*product.price}} SR
+          </ion-col>
           <ion-col width-50>
            
                 <button #myButton ion-button icon-only (click)="toggleIcon()">
@@ -34,14 +51,21 @@
                   </button>
            
           </ion-col>
+
+          <button ion-button icon-only (click)="addtoCart()">
+              <ion-icon ios="ios-basket" md="md-basket"></ion-icon>
+          </button>
       </ion-row>
 
 
     
   </div>
 
-  <div>
-    <p padding class="text" *ngFor="let product of productInfo">
+  
+ 
+
+  <div class="textdes">
+    <p  class="text" *ngFor="let product of productInfo">
       {{product.full_description}}
     </p>
   </div>

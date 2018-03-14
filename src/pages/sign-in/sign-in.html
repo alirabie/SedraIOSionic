@@ -14,12 +14,12 @@
 
     <ion-item>
       <ion-label floating>{{ 'USER' | translate }}</ion-label>
-      <ion-input  [(ngModel)]="loginData.Email" type="text"></ion-input>
+      <ion-input  [(ngModel)]="loginData.Email" required="true" type="text"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label floating>{{ 'PASS' | translate }}</ion-label>
-      <ion-input [(ngModel)]="loginData.Password" type="password"></ion-input>
+      <ion-input [(ngModel)]="loginData.Password" required="true" type="password"></ion-input>
     </ion-item>
   </ion-list>
 

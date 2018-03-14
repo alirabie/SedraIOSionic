@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, Config } from 'io
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
 import { SignInPage } from '../sign-in/sign-in'
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 @IonicPage()
 @Component({
@@ -11,12 +13,13 @@ import { SignInPage } from '../sign-in/sign-in'
 })
 export class ProductInfoPage {
 
+  count = 1 ;
 
 
   id: String = "";
   name: string = "";
   productInfo = [];
-  relatedProducts=[];
+  relatedProducts = [];
 
   buttonIcon: string = "heart";
 
@@ -29,7 +32,8 @@ export class ProductInfoPage {
     public genrator: GenratorProvider,
     public alertCtrl: AlertController,
     private translate: TranslateService,
-    config: Config) {
+    config: Config,
+    public SocialSharing: SocialSharing) {
 
 
     this.id = this.navParams.get("productId");
@@ -75,23 +79,45 @@ export class ProductInfoPage {
   }
 
 
-getRelatedProducts(){
-  this.genrator.getRelatedProducts(this.id).subscribe((data)=>{
-      this.relatedProducts=data['products'];
-  });
-}
+  getRelatedProducts() {
+    this.genrator.getRelatedProducts(this.id).subscribe((data) => {
+      this.relatedProducts = data['products'];
+    });
+  }
 
 
 
 
-goRelatedProduct(id,name){
-  this.navCtrl.push( ProductInfoPage, {
-    productId: id,
-    prouductName: name
-  }); 
-}
+  goRelatedProduct(id, name) {
+    this.navCtrl.push(ProductInfoPage, {
+      productId: id,
+      prouductName: name
+    });
+  }
+
+  share() {
 
 
+    let st: string = encodeURIComponent(this.name.replace(' ', '-'))
+    this.SocialSharing.share("http://sedragift.com/"+st).then(() => {
+      console.log("shareSheetShare: Success");
+    }).catch((err) => {
+      console.error("shareSheetShare: failed");
+    });
+  }
+
+
+  up(){
+    this.count++;
+  }
+
+  dwon(){
+    if(this.count<=1){
+      return;
+    }else{
+      this.count--;
+    }
+  }
 
 
 
