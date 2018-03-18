@@ -8,9 +8,21 @@
         "dilog":"SEDRA",
         "login":"SignIn",
         "menu":"Menu",
-        "cart":"Shopping Cart"
+        "cart":"Shopping Cart",
+        "dicounted":"Discounted Products"
 
     },  
+    "SIDEMENU":{
+        "home":"Home",
+        "settings":"Settings",
+        "account":"MyAccount",
+        "basket":"Shopping Basket",
+        "discounted":"Discounted",
+        "favorites":"Favorites",
+        "aboutus":"AboutUs",
+        "contactus":"ContactUs",
+        "logout":"Signout"
+    },
     "BUTTONS" : {
         "btn_eng" : "English",
         "btn_cro" : "Croatian",
@@ -41,6 +53,8 @@
     "ADEDD" :"Item has been Added to Shopping Cart",
     "CONTINE":"Continue Shopping",
     "END":"Checkout",
+    "RELATEDP":"Related Products",
+    "search":"Search",
     "IN_APP" : "Internal app translation",
     "DEL":"Delete Product",
     "FOO": "Foo {{test}}"

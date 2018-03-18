@@ -8,53 +8,53 @@
   </ion-header>
   <ion-content >
     <ion-list>
-      <button ion-item detail-none class="sidemenu">
+      <button ion-item detail-none class="sidemenu"(click)="gohome()">
         <ion-icon name="home" item-end></ion-icon>
-        <h2>Home</h2>
+        <h2> {{ 'SIDEMENU.home' | translate }}</h2>
       </button>
 
-      <button ion-item detail-none class="sidemenu">
+      <button ion-item detail-none class="sidemenu" (click)="goSettings()">
         <ion-icon name="cog" item-end></ion-icon>
-        <h2>Settings</h2>
+        <h2>{{ 'SIDEMENU.settings' | translate }}</h2>
       </button>
 
       <button ion-item detail-none class="sidemenu">
         <ion-icon name="ios-contact" item-end></ion-icon>
-        <h2>Account</h2>
+        <h2>{{ 'SIDEMENU.account' | translate }}</h2>
       </button>
 
       <button ion-item detail-none class="sidemenu" (click)="goShoppingCartPage()">
         <ion-icon name="ios-basket" item-end></ion-icon>
-        <h2>Basket</h2>
+        <h2>{{ 'SIDEMENU.basket' | translate }}</h2>
       </button>
 
-      <button ion-item detail-none class="sidemenu">
+      <button ion-item detail-none class="sidemenu" (click)="goDiscounted()">
         <ion-icon name="ios-pricetags" item-end></ion-icon>
-        <h2>Discounted Products</h2>
+        <h2>{{ 'SIDEMENU.discounted' | translate }}</h2>
       </button>
 
 
       <button ion-item detail-none class="sidemenu" (click)="goFavoritesPage()">
         <ion-icon name="heart" item-end></ion-icon>
-        <h2>Favorites</h2>
+        <h2>{{ 'SIDEMENU.favorites' | translate }}</h2>
       </button>
 
 
       <button ion-item detail-none class="sidemenu">
         <ion-icon name="ios-people" item-end></ion-icon>
-        <h2>About Us</h2>
+        <h2>{{ 'SIDEMENU.aboutus' | translate }}</h2>
       </button>
 
 
       <button ion-item detail-none class="sidemenu">
         <ion-icon name="ios-mail" item-end></ion-icon>
-        <h2>Contact Us</h2>
+        <h2>{{ 'SIDEMENU.contactus' | translate }}</h2>
       </button>
 
 
       <button ion-item detail-none class="sidemenu" (click)="logout()">
         <ion-icon name="ios-log-out" item-end></ion-icon>
-        <h2>Logout</h2>
+        <h2>{{ 'SIDEMENU.logout' | translate }}</h2>
       </button>
 
     </ion-list>

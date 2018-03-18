@@ -22,6 +22,8 @@ import { ProductInfoPage } from '../pages/product-info/product-info'
 import { FavoritesPage } from '../pages/favorites/favorites'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart'
+import { DiscountedProductsPage } from '../pages/discounted-products/discounted-products'
+import { SettingsPage } from '../pages/settings/settings'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
@@ -41,7 +43,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomePage,
     ProductInfoPage,
     FavoritesPage ,
-    ShoppingCartPage
+    ShoppingCartPage ,
+    DiscountedProductsPage,
+    SettingsPage
    
   ],
   imports: [
@@ -71,7 +75,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomePage ,
     ProductInfoPage ,
     FavoritesPage ,
-    ShoppingCartPage
+    ShoppingCartPage ,
+    DiscountedProductsPage ,
+    SettingsPage
   ],
   providers: [
     StatusBar,

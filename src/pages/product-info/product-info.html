@@ -56,9 +56,6 @@
               <ion-icon ios="ios-basket" md="md-basket"></ion-icon>
           </button>
       </ion-row>
-
-
-    
   </div>
 
   
@@ -72,7 +69,13 @@
 
 
 
-  <ion-list>
+  <ion-list >
+    <ion-item *ngIf="relatedProducts.length !== 0">
+        <ion-label class="relatedhedder">
+            <h2 >{{'RELATEDP' | translate}}</h2>
+        </ion-label>
+    </ion-item>
+     
       <ion-item *ngFor="let product of relatedProducts">
         <ion-thumbnail  item-start>
           <img *ngFor="let image of product.images" [src]="image.src">

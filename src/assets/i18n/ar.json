@@ -8,7 +8,9 @@
         "dilog":"سيدرا",
         "login":"تسجيل الدخول",
         "menu":"القائمة",
-        "cart":"سلة المشتريات"
+        "cart":"سلة المشتريات",
+        "dicounted":"منتجات مخفضه"
+        
     },  
     "BUTTONS" : {
         "btn_eng" : "English",
@@ -20,6 +22,16 @@
         "dissmiss":"إخفاء",
         "back":"رجوع"
 
+    },"SIDEMENU":{
+        "home":"الرئيسية",
+        "settings":"الإعدادات",
+        "account":"حسابي",
+        "basket":"سلة المشتريات",
+        "discounted":"التخفيضات",
+        "favorites":"المفضلة",
+        "aboutus":"عنا",
+        "contactus":"تواصل معنا",
+        "logout":"تسجيل الخروج"
     },
 
     "LOADING" :"من فضلك انتظر ...",
@@ -39,6 +51,8 @@
     "CONTINE":"إستمرار التسوق",
     "END":"إنهاء الطلب",
     "DEL":"حذف المنتج",
+    "RELATEDP":"منتجات مقترحة",
+    "search":"بحث",
     "IN_APP" : "Internal app translation",
    
     "FOO": "Foo {{test}}"

@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{'SIDEMENU.settings' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+ 
+    <ion-select placeholder="{{ 'LANG' | translate }}" [(ngModel)]="language" interface="action-sheet" (ionChange)="onChange($event)">
+      <ion-option value="ar">عربي</ion-option>
+      <ion-option value="en">English</ion-option>
+    </ion-select>
+  
+</ion-content>

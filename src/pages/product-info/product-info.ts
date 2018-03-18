@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SignInPage } from '../sign-in/sign-in'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ShoppingCartPage } from '../shopping-cart/shopping-cart';
+import { TabsPage } from '../tabs/tabs';
 
 
 @IonicPage()
@@ -166,7 +167,7 @@ export class ProductInfoPage {
                 text: this.translate.instant('CONTINE'),
                 handler: () => {
                   //ٌResume Shopping
-                  this.navCtrl.popToRoot();
+                  this.navCtrl.popTo(TabsPage);
 
                   console.log(localStorage.getItem("cartCount"))
                 }

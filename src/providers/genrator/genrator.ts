@@ -133,4 +133,12 @@ export class GenratorProvider {
     return this.http.delete(this.url+"api/shopping_cart_items/"+id).map((res : Response)=>res.json());
   }
 
+
+  getAlldisounted(){
+    return this.http.get(this.url+"api/products/discounted/").map((res : Response)=>res.json());
+  }
+
+  getdiscountedById(id){
+    return this.http.get(this.url+"api/products/discounted/"+id).map((res : Response)=>res.json());
+  }
 }

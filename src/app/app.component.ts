@@ -8,7 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { FavoritesPage } from '../pages/favorites/favorites'
 import { SignInPage } from '../pages/sign-in/sign-in'
 import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart'
-
+import { DiscountedProductsPage } from '../pages/discounted-products/discounted-products'
+import { HomePage } from '../pages/home/home';
+import { SettingsPage } from '../pages/settings/settings'
 @Component({
   templateUrl: 'app.html'
 })
@@ -65,6 +67,7 @@ export class MyApp {
     
   }
 
+
   //Shopping Cart
   goShoppingCartPage() {
     if (localStorage.getItem("customerid") === "") {
@@ -74,6 +77,25 @@ export class MyApp {
       this.nav.push(ShoppingCartPage);
       this.menuCtrl.toggle();
     }
+  }
+
+
+  //Discounted Products
+  goDiscounted(){
+    this.nav.push(DiscountedProductsPage);
+    this.menuCtrl.toggle();
+  }
+
+  //go home page
+  gohome(){
+    this.nav.push(TabsPage);
+    this.menuCtrl.toggle();
+  }
+
+  //go settings
+  goSettings(){
+    this.nav.push(SettingsPage);
+    this.menuCtrl.toggle();
   }
   
 }

@@ -10,13 +10,13 @@
     </ion-buttons>
     <ion-buttons (click)="goShoppingCartPage()" left>
       <button ion-button icon-only>
-        <ion-icon ios="ios-cart"></ion-icon>
+        <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
         <ion-badge color="danger">{{badgeValue}}</ion-badge>
       </button>
     </ion-buttons>
   </ion-navbar>
 
-  <ion-searchbar color="primary" [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filter()" (ionCancel)="onCancel($event)">
+  <ion-searchbar placeholder="{{'search' | translate}}" color="primary" [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filter()" (ionCancel)="onCancel($event)">
   </ion-searchbar>
 
 

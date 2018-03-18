@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+
+      {{ 'PAGE_TITLE.dicounted' | translate }}
+
+    </ion-title>
+  </ion-navbar>
+
+  <ion-item>
+
+    <ion-select placeholder="{{ 'CAT' | translate }}" interface="popover" [(ngModel)]="cat">
+      <ion-option *ngFor="let cat of categoriesList" (ionSelect)="getDiscountedById(cat.id)">{{cat.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+ 
+
+</ion-header>
+
+
+<ion-content class="grid-full">
+
+    <ion-label *ngIf="discountedProducts.length === 0">{{ 'EMPTY' | translate }}</ion-label>
+
+  <ion-row responsive-sm>
+    <ion-col *ngFor="let product of discountedProducts" class="cell-1">
+      <ion-card>
+        <img class="image1" src="/assets/imgs/sale_s.png" />
+        <img class="image2" (click)="goProductInfo(product.id,product.name)" height="100 px" width="100 px" *ngFor="let image of product.images"
+          [src]="image.src" />
+        <div class="card-title">
+          {{ product.price }} SR
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -6,11 +6,12 @@
 <ion-content class="background" padding>
      
     <ion-item color="primary" >
-        <ion-label >{{ 'LANG' | translate }}</ion-label>
+        
         <ion-select [(ngModel)]="language" interface="action-sheet" (ionChange)="onChange($event)">
           <ion-option value="ar">عربي</ion-option>
           <ion-option value="en">English</ion-option>
         </ion-select>
+        <ion-label >{{ 'LANG' | translate }}</ion-label>
       </ion-item>    
 
 </ion-content>
