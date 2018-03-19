@@ -9,7 +9,8 @@
         "login":"SignIn",
         "menu":"Menu",
         "cart":"Shopping Cart",
-        "dicounted":"Discounted Products"
+        "dicounted":"Discounted Products",
+        "abouUs" : "AboutUs"
 
     },  
     "SIDEMENU":{
@@ -57,5 +58,8 @@
     "search":"Search",
     "IN_APP" : "Internal app translation",
     "DEL":"Delete Product",
-    "FOO": "Foo {{test}}"
+    "address" :"Address",
+    "add":" 255 King Fahd St , Al-Dmam - Al-Khobr",
+    "FOO": "Foo {{test}}",
+    "about":"Sedra is an e-shop consists of four sections the first for Flowers, the second for the various gifts, the third for chocolates and cakes, the fourth for seedlings and the ornamental trees"
 }

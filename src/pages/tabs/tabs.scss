@@ -18,19 +18,19 @@
     .tabs{
       a[aria-selected=false]{
          .tab-button-icon[ng-reflect-name=cookies], .tab-button-icon[aria-label="categories"] {
-          background-image: url(/assets/imgs/cookiesbtnunactive.png);
+          background-image: url(../assets/imgs/cookiesbtnunactive.png);
         }
         .tab-button-icon[ng-reflect-name=flowers], .tab-button-icon[aria-label=home] {
-          background-image: url(/assets/imgs/flowerbtnunactive.png);
+          background-image: url(../assets/imgs/flowerbtnunactive.png);
         }
         .tab-button-icon[ng-reflect-name=gifts], .tab-button-icon[aria-label=hot] {
-          background-image: url(/assets/imgs/giftbtnunactive.png);
+          background-image: url(../assets/imgs/giftbtnunactive.png);
         }
         .tab-button-icon[ng-reflect-name=plantes], .tab-button-icon[aria-label=hot] {
-            background-image: url(/assets/imgs/plantsbtnunactive.png);
+            background-image: url(../assets/imgs/plantsbtnunactive.png);
           }
         .tab-button-icon[ng-reflect-name=homeic], .tab-button-icon[aria-label=hot] {
-            background-image: url(/assets/imgs/homeun_active.png);
+            background-image: url(../assets/imgs/homeun_active.png);
           }
       }
        
@@ -38,19 +38,19 @@
      a[aria-selected=true] {
       
         .tab-button-icon[ng-reflect-name=cookies], .tab-button-icon[aria-label="categories"] {
-            background-image: url(/assets/imgs/cookiesbtnactive.png);
+            background-image: url(../assets/imgs/cookiesbtnactive.png);
           }
           .tab-button-icon[ng-reflect-name=flowers], .tab-button-icon[aria-label=home] {
-            background-image: url(/assets/imgs/flowerbtnactive.png);
+            background-image: url(../assets/imgs/flowerbtnactive.png);
           }
           .tab-button-icon[ng-reflect-name=gifts], .tab-button-icon[aria-label=hot] {
-            background-image: url(/assets/imgs/giftbtnactive.png);
+            background-image: url(../assets/imgs/giftbtnactive.png);
           }
           .tab-button-icon[ng-reflect-name=plantes], .tab-button-icon[aria-label=hot] {
-              background-image: url(/assets/imgs/plantsbtnactive.png);
+              background-image: url(../assets/imgs/plantsbtnactive.png);
             }
           .tab-button-icon[ng-reflect-name=homeic], .tab-button-icon[aria-label=hot] {
-              background-image: url(/assets/imgs/home_active.png);
+              background-image: url(../assets/imgs/home_active.png);
             }
       }
     }

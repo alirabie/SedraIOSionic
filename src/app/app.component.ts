@@ -11,6 +11,7 @@ import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart'
 import { DiscountedProductsPage } from '../pages/discounted-products/discounted-products'
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings'
+import { AboutUsPage } from '../pages/about-us/about-us'
 @Component({
   templateUrl: 'app.html'
 })
@@ -47,7 +48,7 @@ export class MyApp {
   goFavoritesPage(){
 
     //Check if user loged in or not 
-    if (localStorage.getItem('customerid') === ""){
+    if (localStorage.getItem('customerid') === null){
       this.nav.push( SignInPage );
       this.menuCtrl.toggle();
     }else{
@@ -60,17 +61,16 @@ export class MyApp {
 
   //Logout
   logout(){
-    localStorage.setItem('customerid',"");
+    localStorage.setItem('customerid',null);
     localStorage.setItem('cartCount',"");
     this.nav.popToRoot();
     this.menuCtrl.toggle();
-    
   }
 
 
   //Shopping Cart
   goShoppingCartPage() {
-    if (localStorage.getItem("customerid") === "") {
+    if (localStorage.getItem('customerid') === null) {
       this.nav.push(SignInPage);
       this.menuCtrl.toggle();
     } else {
@@ -95,6 +95,13 @@ export class MyApp {
   //go settings
   goSettings(){
     this.nav.push(SettingsPage);
+    this.menuCtrl.toggle();
+  }
+
+
+  //AboutUs
+  goAboutUs(){
+    this.nav.push(AboutUsPage);
     this.menuCtrl.toggle();
   }
   

@@ -63,7 +63,7 @@ export class ProductInfoPage {
 
   toggleIcon(getIcon: string) {
 
-    if (localStorage.getItem('customerid') === "") {
+    if (localStorage.getItem('customerid') === null) {
 
       this.navCtrl.push(SignInPage);
 
@@ -130,7 +130,7 @@ export class ProductInfoPage {
   addToCart() {
 
 
-    if (localStorage.getItem("customerid") === "") {
+    if (localStorage.getItem("customerid") === null) {
 
       this.navCtrl.push(SignInPage);
     } else {

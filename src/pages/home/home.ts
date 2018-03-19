@@ -155,7 +155,7 @@ export class HomePage {
 
 
   goShoppingCartPage() {
-    if (localStorage.getItem("customerid") === "") {
+    if (localStorage.getItem("customerid") === null) {
       this.navCtrl.push(SignInPage);
     } else {
       this.navCtrl.push(ShoppingCartPage);

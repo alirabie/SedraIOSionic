@@ -48,10 +48,10 @@ export class IntroScreenPage {
 
 
 checkLoginStatus(){
-
-  if (localStorage.getItem('customerid') === "") {
+  if (localStorage.getItem('customerid')===null) {
 
   }else{
+    console.log("gooooo"+localStorage.getItem('customerid'));
     this.translate.use("ar");
     this.navCtrl.push(TabsPage);
   }
