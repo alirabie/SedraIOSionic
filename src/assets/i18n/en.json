@@ -10,7 +10,9 @@
         "menu":"Menu",
         "cart":"Shopping Cart",
         "dicounted":"Discounted Products",
-        "abouUs" : "AboutUs"
+        "abouUs" : "AboutUs",
+        "signup" : "Registration",
+        "active" : "Account Activation"
 
     },  
     "SIDEMENU":{
@@ -36,7 +38,25 @@
     },
 
 
+ "SIgNUP": {
+    "creat":"Create Your Account Now",
+"email" :"Email Address",
+"fname" : "First Name",
+"lname" : "Last Name",
+"password" : "Password",
+"repassword" : "Re Password",
+"phone" : "Phone Number" ,
+"address" : "Address",
+"cont" : "Next",
+"notmatch" : "Passwords Not Match"
+    },
 
+    "ACTIVE": {
+        "title": "Please Insert Verification Code",
+        "code": "Activation Code",
+        "create": "Create Account",
+        "donecreated":"Your Account has been Created successfully"
+    },
 
     "LOADING" :"Please wait...",
     "LANG" :"Select App Language",

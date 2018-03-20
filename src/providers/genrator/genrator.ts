@@ -71,11 +71,35 @@ export class GenratorProvider {
   }
 
 
+
+  signUp(credentials) {
+    return new Promise((resolve, reject) => {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http.post(this.url+'api/customers/', JSON.stringify(credentials), {headers: headers})
+          .subscribe(res => {
+            resolve(res.json());
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+
+
+
+  VerifyPhon(phoneNum){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.url+"api/customers/PhoneVerification?phoneno="+phoneNum,{headers : headers}).map((res : Response)=>res.json());
+  }
+
+
+
+
   login(credentials) {
     return new Promise((resolve, reject) => {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-
         this.http.post(this.url+'api/customers/login', JSON.stringify(credentials), {headers: headers})
           .subscribe(res => {
             resolve(res.json());

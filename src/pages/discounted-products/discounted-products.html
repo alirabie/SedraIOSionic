@@ -27,7 +27,7 @@
   <ion-row responsive-sm>
     <ion-col *ngFor="let product of discountedProducts" class="cell-1">
       <ion-card>
-        <img class="image1" src="/assets/imgs/sale_s.png" />
+        <img class="image1" src="./assets/imgs/sale_s.png" />
         <img class="image2" (click)="goProductInfo(product.id,product.name)" height="100 px" width="100 px" *ngFor="let image of product.images"
           [src]="image.src" />
         <div class="card-title">

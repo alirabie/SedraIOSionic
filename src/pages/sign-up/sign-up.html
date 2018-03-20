@@ -1,50 +1,144 @@
-<!--
-  Generated template for the SignUpPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>signUp</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>{{'PAGE_TITLE.signup' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <ion-list>
-        <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input type="text" required></ion-input>
+<ion-content>
+  <br>
+  <h5 class="title">{{'SIgNUP.creat' | translate}}</h5>
+  <br>
+
+
+
+  <form [formGroup]="form" (ngSubmit)="SaveChanges(form.value)">
+    <ion-list no-line>
+
+        <ion-item class="colr">
+            <ion-label color="primary" floating>{{'SIgNUP.email' | translate}}</ion-label>
+            <ion-input formControlName="email" type="text"></ion-input>
+          </ion-item>
+          <span *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">
+              <span [hidden]="!form.controls['email'].errors.required">
+                  <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+          </span>
+          <span *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched">
+                <span [hidden]="!form.controls['email'].errors.email">
+                    <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                </span>
+            </span>
+
+      <ion-item class="colr">
+        <ion-label color="primary" floating>{{'SIgNUP.fname' | translate}}</ion-label>
+        <ion-input formControlName="firstName" type="text"></ion-input>
+      </ion-item>
+      <span *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched">
+          <span [hidden]="!form.controls['firstName'].errors.required">
+              <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+          </span>
+      </span>
+
+      <ion-item class="colr">
+          <ion-label color="primary" floating>{{'SIgNUP.lname' | translate}}</ion-label>
+          <ion-input formControlName="lastname" type="text"></ion-input>
         </ion-item>
-      
-        <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-      
-      <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" required></ion-input>
-        </ion-item>
+        <span *ngIf="form.controls['lastname'].hasError('required') && form.controls['lastname'].touched">
+            <span [hidden]="!form.controls['lastname'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+            </span>
+        </span>
 
+        <ion-item class="colr">
+            <ion-label color="primary" floating>{{'SIgNUP.password' | translate}}</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+          </ion-item>
+          <span *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">
+              <span [hidden]="!form.controls['password'].errors.required">
+                  <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+          </span>
 
-      <ion-item>
-          <ion-label floating>Re-Password</ion-label>
-          <ion-input type="password" required></ion-input>
-        </ion-item>
-
-
-      <ion-item>
-          <ion-label floating>Phone Number</ion-label>
-          <ion-input type="phone" required></ion-input>
-        </ion-item>
-
-      </ion-list>
-
-      <button ion-button block color="primary">SignUp</button>
+          <ion-item class="colr">
+              <ion-label color="primary" floating>{{'SIgNUP.repassword' | translate}}</ion-label>
+              <ion-input formControlName="rpassword" type="password"></ion-input>
+            </ion-item>
+            <span *ngIf="form.controls['rpassword'].hasError('required') && form.controls['rpassword'].touched">
+                <span [hidden]="!form.controls['rpassword'].errors.required">
+                    <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                </span>
+            </span>
   
-    
+            <ion-item class="colr">
+                <ion-label color="primary" floating>{{'SIgNUP.phone' | translate}}</ion-label>
+                <ion-input formControlName="phone" type="text"></ion-input>
+              </ion-item>
+              <span *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched">
+                  <span [hidden]="!form.controls['phone'].errors.required">
+                      <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                  </span>
+              </span>
+
+              <ion-item class="colr">
+                  <ion-label color="primary" floating>{{ 'COUNTRY' | translate }}</ion-label>
+                  <ion-select formControlName="country" interface="popover" [(ngModel)]="cntry">
+                      <ion-option *ngFor="let country of countriesList" (ionSelect)="getCities(country.id)" (ionSelect)="setCntryId(country.id)">{{country.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <span *ngIf="form.controls['country'].hasError('required') && form.controls['country'].touched">
+                    <span [hidden]="!form.controls['country'].errors.required">
+                        <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                    </span>
+                </span>
+
+                <ion-item class="colr">
+                    <ion-label color="primary" floating>{{ 'CITY' | translate }}</ion-label>
+                    <ion-select formControlName="citye" interface="popover" [(ngModel)]="City">
+                        <ion-option *ngFor="let city of citiesList" (ionSelect)="getDistricts()" (ionSelect)="setCityid(city.id)">{{city.name}}</ion-option>
+                      </ion-select>
+                  </ion-item>
+                  <span *ngIf="form.controls['citye'].hasError('required') && form.controls['citye'].touched">
+                      <span [hidden]="!form.controls['citye'].errors.required">
+                          <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                      </span>
+                  </span>
+
+
+                  <ion-item class="colr">
+                      <ion-label color="primary" floating>{{ 'NHOOD' | translate }}</ion-label>
+                      <ion-select formControlName="districtt" interface="popover" [(ngModel)]="district">
+                          <ion-option *ngFor="let dis of districtsList">{{dis.name}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <span *ngIf="form.controls['districtt'].hasError('required') && form.controls['districtt'].touched">
+                        <span [hidden]="!form.controls['districtt'].errors.required">
+                            <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                        </span>
+                    </span>
+                    
+
+                    <ion-item class="colr">
+                        <ion-label color="primary" floating>{{'SIgNUP.address' | translate}}</ion-label>
+                        <ion-input formControlName="addr" type="text"></ion-input>
+                      </ion-item>
+                      <span *ngIf="form.controls['addr'].hasError('required') && form.controls['addr'].touched">
+                          <span [hidden]="!form.controls['addr'].errors.required">
+                              <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                          </span>
+                      </span>
+
+
+    </ion-list>
+    <div>
+      <button ion-button color="primary" [disabled]="!form.valid" block>
+        <span class="fontColor">{{'SIgNUP.cont' | translate}}</span>
+      </button>
+    </div>
+  </form>
+
+
+
 </ion-content>

@@ -25,6 +25,7 @@ import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart'
 import { DiscountedProductsPage } from '../pages/discounted-products/discounted-products'
 import { SettingsPage } from '../pages/settings/settings'
 import { AboutUsPage } from '../pages/about-us/about-us'
+import { AccountActivePage } from '../pages/account-active/account-active'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShoppingCartPage ,
     DiscountedProductsPage,
     SettingsPage,
-    AboutUsPage
+    AboutUsPage,
+    AccountActivePage
    
   ],
   imports: [
@@ -80,7 +82,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShoppingCartPage ,
     DiscountedProductsPage ,
     SettingsPage ,
-    AboutUsPage
+    AboutUsPage ,
+    AccountActivePage
   ],
   providers: [
     StatusBar,
