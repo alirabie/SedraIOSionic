@@ -19,6 +19,8 @@ export class ProductInfoPage {
   name: string = "";
   productInfo = [];
   relatedProducts = [];
+  min ="" ;
+  max ="" ;
 
   buttonIcon: string = "heart";
 
@@ -58,6 +60,13 @@ export class ProductInfoPage {
   getProductInf() {
     this.genrator.getProudctInfo(this.id).subscribe((data) => {
       this.productInfo = data['products'];
+       //Get Max and min Preparing product
+       let obj = this.productInfo['0'];
+       let attr = obj['attributes'];
+       let max = attr['0'];
+       let min =attr['1'];
+       this.min=min.default_value;
+       this.max=max.default_value;
     });
   }
 
@@ -203,5 +212,9 @@ export class ProductInfoPage {
       localStorage.setItem("cartCount", items.length + "");
     });
   }
+
+
+
+
 
 }

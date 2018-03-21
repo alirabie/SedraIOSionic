@@ -118,12 +118,7 @@ export class HomePage {
     loader.present();
     return this.genrator.filterProducts(this.cntry, this.City, this.district, this.categoryId, this.vendor, this.myInput).subscribe((data) => {
       this.productsList = data['products'];
-      this.cntry = "";
-      this.City = "";
-      this.district = "";
-      this.vendor = "";
-      this.categoryId = "";
-      this.cat = "";
+    
 
 
       loader.dismiss();

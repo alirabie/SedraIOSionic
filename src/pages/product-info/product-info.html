@@ -25,9 +25,11 @@
       <ion-slide *ngFor="let image of product.images">
         <img class="img" height="100 px" width="100 px" [src]="image.src">
       </ion-slide>
-    </ion-slides>
+    </ion-slides>  
   </div>
-
+  <div class="prepare">
+      {{'dayes' | translate}} {{min}} - {{max}} 
+    </div>
   <div  class="price-bar"  *ngFor="let product of productInfo">
 
 
@@ -52,31 +54,31 @@
            
           </ion-col>
 
-          <button ion-button icon-only (click)="addToCart()">
-              <ion-icon ios="ios-basket" md="md-basket"></ion-icon>
+          <button class="cartbutton"  ion-button icon-only (click)="addToCart()">
+              <ion-icon  ios="ios-cart" md="md-cart"></ion-icon>
           </button>
       </ion-row>
-  </div>
 
+  </div>
+ 
   
  
 
-  <div class="textdes">
+  <!-- <div class="textdes">
     <p  class="text" *ngFor="let product of productInfo">
-      {{product.full_description}}
+  
     </p>
-  </div>
+  </div> -->
 
-
-
+<div class="bg" *ngIf="relatedProducts.length !== 0" > 
   <ion-list >
-    <ion-item *ngIf="relatedProducts.length !== 0">
+    <ion-item no-lines class="trans">
         <ion-label class="relatedhedder">
             <h2 >{{'RELATEDP' | translate}}</h2>
         </ion-label>
     </ion-item>
      
-      <ion-item *ngFor="let product of relatedProducts">
+      <ion-item no-lines *ngFor="let product of relatedProducts">
         <ion-thumbnail  item-start>
           <img *ngFor="let image of product.images" [src]="image.src">
         </ion-thumbnail>
@@ -85,6 +87,7 @@
         <button ion-button clear item-end (click)="goRelatedProduct(product.id,product.name)">{{ 'VIEW' | translate }}</button>
       </ion-item>
     </ion-list>
+  </div>
 
 
 

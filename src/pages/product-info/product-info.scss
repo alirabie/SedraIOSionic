@@ -58,7 +58,45 @@ page-product-info {
  
     
 
-   
+     
 
-    
+     .trans{
+        border-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+     }
+   
+     .price{
+         font-size: 10pt;
+     }
+
+   
+     .cartbutton{
+        margin-right: 15px;
+     }
+
+     .bg{
+        background-image: url(../assets/imgs/floarbg.png);
+        display: flex;
+     }
+
+     .trans{
+        border-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+        color: white; 
+     }
+     .item{
+        margin:10px auto;
+        border-top: 0px;
+      }
+
+      .prepare{
+          background-color:#4C4B4B;
+          text-align: center;
+          color: floralwhite;
+          padding-top: 3pt;
+          padding-bottom: 2pt;
+
+      }
+
+
 }
