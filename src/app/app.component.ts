@@ -12,6 +12,7 @@ import { DiscountedProductsPage } from '../pages/discounted-products/discounted-
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings'
 import { AboutUsPage } from '../pages/about-us/about-us'
+import { ProfilePage } from '../pages/profile/profile'
 @Component({
   templateUrl: 'app.html'
 })
@@ -102,6 +103,13 @@ export class MyApp {
   //AboutUs
   goAboutUs(){
     this.nav.push(AboutUsPage);
+    this.menuCtrl.toggle();
+  }
+
+
+  //Go profile
+  goProfile(){
+    this.nav.push(ProfilePage);
     this.menuCtrl.toggle();
   }
   

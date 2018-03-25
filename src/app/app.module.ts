@@ -26,6 +26,7 @@ import { DiscountedProductsPage } from '../pages/discounted-products/discounted-
 import { SettingsPage } from '../pages/settings/settings'
 import { AboutUsPage } from '../pages/about-us/about-us'
 import { AccountActivePage } from '../pages/account-active/account-active'
+import { ProfilePage } from '../pages/profile/profile'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
@@ -49,7 +50,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountedProductsPage,
     SettingsPage,
     AboutUsPage,
-    AccountActivePage
+    AccountActivePage,
+    ProfilePage
    
   ],
   imports: [
@@ -83,7 +85,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountedProductsPage ,
     SettingsPage ,
     AboutUsPage ,
-    AccountActivePage
+    AccountActivePage ,
+    ProfilePage
   ],
   providers: [
     StatusBar,

@@ -165,4 +165,8 @@ export class GenratorProvider {
   getdiscountedById(id){
     return this.http.get(this.url+"api/products/discounted/"+id).map((res : Response)=>res.json());
   }
+
+  getCustomerInfo(id){
+    return this.http.get(this.url+"api/customers/"+id).map((res : Response)=>res.json());
+  }
 }
