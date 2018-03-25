@@ -61,14 +61,33 @@
 
   </div>
  
-  
- 
 
-  <!-- <div class="textdes">
-    <p  class="text" *ngFor="let product of productInfo">
+
+
   
-    </p>
-  </div> -->
+  <button ion-button full outline (click)="onButtonClick()">
+    <ion-icon padding ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    <br> Add Gift Card 
+  </button>
+  <div  *ngIf="buttonClicked" type="text" value="" class="giftcard">
+   
+    <ion-item>
+      <ion-label floating>{{ 'USER' | translate }}</ion-label>
+      <ion-input required="true" type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>{{ 'PASS' | translate }}</ion-label>
+      <ion-input  required="true" type="password"></ion-input>
+    </ion-item>
+  </div>
+
+
+
+
+
+
+
 
 <div class="bg" *ngIf="relatedProducts.length !== 0" > 
   <ion-list >

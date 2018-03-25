@@ -24,7 +24,14 @@ export class ProductInfoPage {
 
   buttonIcon: string = "heart";
 
+  
 
+  public buttonClicked: boolean = false; //Whatever you want to initialise it as
+
+  public onButtonClick() {
+
+      this.buttonClicked = !this.buttonClicked;
+  }
 
 
 
@@ -49,6 +56,12 @@ export class ProductInfoPage {
     this.getProductInf();
     this.getRelatedProducts();
     config.set('ios', 'backButtonText', this.translate.instant('BUTTONS.back'));
+
+
+
+
+
+
 
   }
 
@@ -213,8 +226,6 @@ export class ProductInfoPage {
     });
   }
 
-
-
-
+ 
 
 }

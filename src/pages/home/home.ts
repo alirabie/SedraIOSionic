@@ -31,6 +31,12 @@ export class HomePage {
   myInput: String = "";
   badgeValue;
 
+  public buttonClicked: boolean = false; //Whatever you want to initialise it as
+
+  public onButtonClick() {
+
+      this.buttonClicked = !this.buttonClicked;
+  }
 
   constructor(public navCtrl: NavController, public genrator: GenratorProvider, public loadingCtrl: LoadingController, public navParams: NavParams, private translate: TranslateService) {
     this.getProducts();
@@ -156,5 +162,7 @@ export class HomePage {
       this.navCtrl.push(ShoppingCartPage);
     }
   }
+
+
 
 }
