@@ -13,6 +13,7 @@ import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings'
 import { AboutUsPage } from '../pages/about-us/about-us'
 import { ProfilePage } from '../pages/profile/profile'
+import { ContactUsPage } from '../pages/contact-us/contact-us'
 @Component({
   templateUrl: 'app.html'
 })
@@ -110,6 +111,13 @@ export class MyApp {
   //Go profile
   goProfile(){
     this.nav.push(ProfilePage);
+    this.menuCtrl.toggle();
+  }
+
+
+  //Go Contact Us
+  goContactUs(){
+    this.nav.push(ContactUsPage);
     this.menuCtrl.toggle();
   }
   

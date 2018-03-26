@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController , AlertController } from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
 import { ProductInfoPage } from '../product-info/product-info';
@@ -38,7 +38,7 @@ export class HomePage {
       this.buttonClicked = !this.buttonClicked;
   }
 
-  constructor(public navCtrl: NavController, public genrator: GenratorProvider, public loadingCtrl: LoadingController, public navParams: NavParams, private translate: TranslateService) {
+  constructor(public navCtrl: NavController, public genrator: GenratorProvider, public loadingCtrl: LoadingController, public navParams: NavParams, private translate: TranslateService ,public alrtCtrl : AlertController) {
     this.getProducts();
     this.getCountries();
     this.getCategories();
@@ -62,6 +62,15 @@ export class HomePage {
       this.productsList = data['products'];
       this.setCartCount();
       loader.dismiss();
+    },(err)=>{
+      let alert = this.alrtCtrl.create({
+        title: this.translate.instant('PAGE_TITLE.dilog'),
+        subTitle: err,
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+      loader.dismiss();
+
     });
   }
 

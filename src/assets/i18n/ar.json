@@ -75,6 +75,8 @@
     "address": "العنوان الرئيسي",
     "add": "255 شارع الملك فهد , الدمام , الخبر",
     "dayes" :"أيام عمل",
+    "msg" :"رسالتك",
+    "send" :"إرسال",
     "IN_APP": "Internal app translation",
     "FOO": "Foo {{test}}"
 }
