@@ -1,5 +1,5 @@
 import { Component ,ViewChild  } from '@angular/core';
-import { Platform , Nav ,MenuController ,NavController  } from 'ionic-angular';
+import { Platform , Nav ,MenuController ,NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -15,6 +15,7 @@ import { AboutUsPage } from '../pages/about-us/about-us'
 import { ProfilePage } from '../pages/profile/profile'
 import { ContactUsPage } from '../pages/contact-us/contact-us'
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import { ViewController } from 'ionic-angular';
 
 
 
@@ -56,6 +57,7 @@ export class MyApp {
    
       splashScreen.hide();
     });
+    
   }
 
 
@@ -114,7 +116,14 @@ export class MyApp {
 
   //go home page
   gohome(){
-    this.nav.push(TabsPage);
+    
+    this.nav.push(TabsPage).then(() => {
+      // first we find the index of the current view controller:
+      let viewctrl : ViewController;
+      const index = viewctrl.index;
+      // then we remove it from the navigation stack
+      this.nav.remove(index);
+    });
     this.menuCtrl.toggle();
   }
 

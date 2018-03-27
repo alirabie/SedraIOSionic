@@ -63,6 +63,11 @@
         <button left ion-button small (click)="filter()"> {{ 'BUTTONS.btn_filter' | translate }}</button>
       </div>
   <ion-label *ngIf="productsList.length === 0">{{ 'EMPTY' | translate }}</ion-label>
+
+
+ 
+
+
   <ion-row center responsive-sm>
     <ion-col *ngFor="let product of productsList" class="cell-1">
       <ion-card>
