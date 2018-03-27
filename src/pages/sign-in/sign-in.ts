@@ -4,6 +4,7 @@ import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TabsPage } from '../tabs/tabs'
 import { AlertController, Config } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { SignUpPage } from '../sign-up/sign-up';
 
 
 @IonicPage()
@@ -69,7 +70,7 @@ export class SignInPage {
       let alert = this.alertCtrl.create({
         title: "",
         subTitle: err,
-        buttons: ['Disms']
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
       });
       alert.present();
 
@@ -84,5 +85,16 @@ export class SignInPage {
       localStorage.setItem("cartCount", items.length + "");
     });
   }
+
+
+  signUp(){
+    this.navCtrl.push(SignUpPage);
+  }
+
+
+
+
+
+
 
 }

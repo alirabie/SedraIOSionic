@@ -25,5 +25,11 @@
 
   <button ion-button block color="primary" (click)="doLogin()">{{ 'PAGE_TITLE.login' | translate }}</button>
 
+  <div>
+    <ion-row>
+      <button class="btn1" ion-button color="light" clear (click)="signUp()">{{'donthaveaccount' | translate}}</button>
+      <button class="btn2" ion-button color="light" clear>{{'forgotpass' | translate}}</button>
+    </ion-row>
+  </div>
   
 </ion-content>

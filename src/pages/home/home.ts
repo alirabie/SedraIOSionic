@@ -8,6 +8,8 @@ import { SignInPage } from '../sign-in/sign-in';
 
 
 
+
+
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -38,16 +40,20 @@ export class HomePage {
       this.buttonClicked = !this.buttonClicked;
   }
 
-  constructor(public navCtrl: NavController, public genrator: GenratorProvider, public loadingCtrl: LoadingController, public navParams: NavParams, private translate: TranslateService ,public alrtCtrl : AlertController) {
+  constructor(public navCtrl: NavController, public genrator: GenratorProvider, public loadingCtrl: LoadingController, public navParams: NavParams, private translate: TranslateService ,public alrtCtrl : AlertController ) {
     this.getProducts();
     this.getCountries();
     this.getCategories();
+
+
+
   }
 
 
   ionViewDidEnter() {
 
     this.setCartCount();
+
 
   }
 
@@ -70,7 +76,6 @@ export class HomePage {
       });
       alert.present();
       loader.dismiss();
-
     });
   }
 

@@ -18,10 +18,21 @@
         <h2>{{ 'SIDEMENU.settings' | translate }}</h2>
       </button>
 
-      <button ion-item detail-none class="sidemenu" (click)="goProfile()">
+      <button *ngIf="loggedIn" ion-item detail-none class="sidemenu" (click)="goProfile()">
         <ion-icon name="ios-contact" item-end></ion-icon>
         <h2>{{ 'SIDEMENU.account' | translate }}</h2>
       </button>
+
+
+
+      <button *ngIf="loggedOut" ion-item detail-none class="sidemenu" (click)="signUp()">
+        <ion-icon name="ios-contact" item-end></ion-icon>
+        <h2>{{ 'PAGE_TITLE.signup' | translate }}</h2>
+      </button>
+      
+
+
+
 
       <button ion-item detail-none class="sidemenu" (click)="goShoppingCartPage()">
         <ion-icon name="ios-basket" item-end></ion-icon>
@@ -52,9 +63,14 @@
       </button>
 
 
-      <button ion-item detail-none class="sidemenu" (click)="logout()">
-        <ion-icon name="ios-log-out" item-end></ion-icon>
+      <button  *ngIf="loggedIn" ion-item detail-none class="sidemenu" (click)="logout()">
+        <ion-icon ios="ios-log-out" md="md-log-out" item-end></ion-icon>
         <h2>{{ 'SIDEMENU.logout' | translate }}</h2>
+      </button>
+
+      <button  *ngIf="loggedOut" ion-item detail-none class="sidemenu" (click)="login()">
+        <ion-icon ios="ios-log-in" md="md-log-in" item-end></ion-icon>
+        <h2>{{ 'SIDEMENU.login' | translate }}</h2>
       </button>
 
     </ion-list>

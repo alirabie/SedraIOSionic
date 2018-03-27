@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController ,  AlertController } from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
 import { ProductInfoPage } from '../product-info/product-info'
@@ -14,7 +14,7 @@ export class FlowersPage {
   public productsList =[];
   badgeValue ;
 
-  constructor(public navCtrl: NavController,public genrator : GenratorProvider , public loadingCtrl: LoadingController,private translate: TranslateService) {
+  constructor(public navCtrl: NavController,public genrator : GenratorProvider , public loadingCtrl: LoadingController,private translate: TranslateService , public alertCtrl : AlertController) {
 
     this.getProducts();
   }
@@ -34,6 +34,15 @@ export class FlowersPage {
       this.productsList=data['products'];
       this.setCartCount();
       loader.dismiss();
+    },(err)=>{
+      let alert = this.alertCtrl.create({
+        title: this.translate.instant('PAGE_TITLE.dilog'),
+        subTitle: err,
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+      loader.dismiss();
+
     });
   }
 

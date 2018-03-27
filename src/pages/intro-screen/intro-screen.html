@@ -17,18 +17,13 @@
 </ion-content>
 
 <ion-footer no-shadow>
-    <div class="row"> 
-    
-        <div class="col col-50"> 
-            <button ion-button color="light" outline (click)="login()">{{ 'BUTTONS.btn_login' | translate }}</button>
-        </div>
-        
-        <div class="col col-50"> 
-            <button ion-button color="light" outline (click)="signUp()">{{ 'BUTTONS.btn_signup' | translate }}</button>
-          </div>
-        
-        <div class="col col-50"> 
-            <button ion-button color="light" outline (click)="gust()">{{ 'BUTTONS.btn_gust' | translate }}</button>
-            </div>
-          </div>
+
+
+    <ion-row>
+            <button class="btn1" ion-button  outline (click)="login()">{{ 'BUTTONS.btn_login' | translate }}</button>
+            <button class="btn1" ion-button  outline (click)="signUp()">{{ 'BUTTONS.btn_signup' | translate }}</button>
+            <button class="btn1" ion-button  outline (click)="gust()">{{ 'BUTTONS.btn_gust' | translate }}</button>
+    </ion-row>
+
+
 </ion-footer>

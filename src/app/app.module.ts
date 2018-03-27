@@ -28,6 +28,7 @@ import { AboutUsPage } from '../pages/about-us/about-us'
 import { AccountActivePage } from '../pages/account-active/account-active'
 import { ProfilePage } from '../pages/profile/profile'
 import { ContactUsPage } from '../pages/contact-us/contact-us'
+import { Network } from '@ionic-native/network';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
@@ -96,7 +97,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SocialSharing,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GenratorProvider
+    GenratorProvider,
+    Network
   ]
 })
 export class AppModule {}

@@ -14,6 +14,10 @@ import { SettingsPage } from '../pages/settings/settings'
 import { AboutUsPage } from '../pages/about-us/about-us'
 import { ProfilePage } from '../pages/profile/profile'
 import { ContactUsPage } from '../pages/contact-us/contact-us'
+import { SignUpPage } from '../pages/sign-up/sign-up';
+
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,11 +26,24 @@ export class MyApp {
   @ViewChild('content') nav: NavController;
 
   rootPage:any = IntroScreenPage;
+  loggedOut=false;
+  loggedIn=false;
   constructor(platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen , 
     private translateService: TranslateService,
     public menuCtrl: MenuController) {
+
+
+      if (localStorage.getItem('customerid') === null){
+        this.loggedOut=true;
+        this.loggedIn=false;
+      }else{
+        this.loggedOut=false;
+        this.loggedIn=true;
+      }
+
+
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -34,8 +51,9 @@ export class MyApp {
       translateService.setDefaultLang('en');
       //translateService.use('ar');  
       
-      statusBar.backgroundColorByHexString('#ffffff');
-      statusBar.styleDefault();
+     // statusBar.backgroundColorByHexString('#ffffff');
+      statusBar.backgroundColorByHexString('#b1925a');
+   
       splashScreen.hide();
     });
   }
@@ -67,8 +85,14 @@ export class MyApp {
     localStorage.setItem('cartCount',"");
     this.nav.popToRoot();
     this.menuCtrl.toggle();
+    this.loggedOut=true;
+    this.loggedIn=false;
   }
 
+  login(){
+    this.nav.push(SignInPage);
+    this.menuCtrl.toggle();
+  }
 
   //Shopping Cart
   goShoppingCartPage() {
@@ -118,6 +142,13 @@ export class MyApp {
   //Go Contact Us
   goContactUs(){
     this.nav.push(ContactUsPage);
+    this.menuCtrl.toggle();
+  }
+
+
+  //Go signUp
+  signUp(){
+    this.nav.push(SignUpPage);
     this.menuCtrl.toggle();
   }
   

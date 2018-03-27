@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Config , LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , Config , LoadingController , AlertController} from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductInfoPage } from '../product-info/product-info'
@@ -20,7 +20,8 @@ export class DiscountedProductsPage {
     public navParams: NavParams , config :Config,
     public genrator : GenratorProvider,
     public loader : LoadingController ,
-    public translate : TranslateService) {
+    public translate : TranslateService,
+    public alertCtrl : AlertController  ) {
 
       this.getDiscountedProducts();
       this.getCategories();
@@ -42,6 +43,15 @@ export class DiscountedProductsPage {
 
       loader.dismiss();
       this.discountedProducts=data['products'];
+
+    },(err)=>{
+      let alert = this.alertCtrl.create({
+        title: this.translate.instant('PAGE_TITLE.dilog'),
+        subTitle: err,
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+      loader.dismiss();
 
     });
 

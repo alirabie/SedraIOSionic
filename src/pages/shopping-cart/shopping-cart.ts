@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Config , LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , Config , LoadingController , AlertController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 
@@ -19,7 +19,8 @@ export class ShoppingCartPage {
      private translate: TranslateService,
      config :Config,
      public genrator : GenratorProvider,
-     public loader : LoadingController) {
+     public loader : LoadingController ,
+     public alertCtrl : AlertController) {
 
       config.set('ios', 'backButtonText', this.translate.instant('BUTTONS.back'));
       this.getCartItems();
@@ -39,7 +40,16 @@ export class ShoppingCartPage {
     this.genrator.getShoppingCartItems(localStorage.getItem("customerid")).subscribe((data)=>{
       this.cartItemsList=data['shopping_carts'];
       loader.dismiss();
-    })
+    },(err)=>{
+      let alert = this.alertCtrl.create({
+        title: this.translate.instant('PAGE_TITLE.dilog'),
+        subTitle: err,
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+      loader.dismiss();
+
+    });
   }
 
 

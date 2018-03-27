@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , AlertController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs'
 import { SignInPage } from '../sign-in/sign-in'
 import { SignUpPage } from '../sign-up/sign-up'
 import { TranslateService } from '@ngx-translate/core';
+import { Network } from '@ionic-native/network';
+
 
 
 @IonicPage()
@@ -16,9 +18,14 @@ export class IntroScreenPage {
  
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams ,public translate: TranslateService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams ,public translate: TranslateService , public network : Network ,public  alertCtrl : AlertController) {
    
    translate.use("ar");
+
+
+   
+
+   this.checNetworkConnection();
    this.checkLoginStatus();
    
   }
@@ -55,6 +62,20 @@ checkLoginStatus(){
     this.translate.use("ar");
     this.navCtrl.push(TabsPage);
   }
+}
+
+
+checNetworkConnection(){
+  this.network.onDisconnect().subscribe(() => {
+    console.log('network was disconnected :-(');
+    let alert = this.alertCtrl.create({
+        title: this.translate.instant('connection'),
+        subTitle: this.translate.instant('nonetwork'),
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+  });
+
 }
 
 

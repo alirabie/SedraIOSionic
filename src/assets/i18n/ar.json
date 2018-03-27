@@ -32,7 +32,8 @@
         "favorites": "المفضلة",
         "aboutus": "عنا",
         "contactus": "تواصل معنا",
-        "logout": "تسجيل الخروج"
+        "logout": "تسجيل الخروج",
+        "login":"تسجيل دخول"
     },
     "SIgNUP": {
         "creat": "قم بإنشاء حسابك",
@@ -77,6 +78,10 @@
     "dayes" :"أيام عمل",
     "msg" :"رسالتك",
     "send" :"إرسال",
+    "donthaveaccount" :"ليس لديك حساب ؟",
+    "forgotpass" :"هل نسيت كلمة المرور ؟",
     "IN_APP": "Internal app translation",
+    "connection" : "خطأ فى الاتصال" ,
+    "nonetwork" : "لم تتوفر خدمة الانترنت من فضلك تحقق من إتصالك و أعد المحاولة",
     "FOO": "Foo {{test}}"
 }

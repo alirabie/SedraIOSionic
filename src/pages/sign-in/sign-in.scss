@@ -6,4 +6,25 @@ page-sign-in {
         align-content: center;
         }
         }
+
+        ion-row{
+            height: auto !important;
+            width: auto !important;
+            align-content: center;
+        }
+
+        .btn1{
+            margin-left: auto;
+            color: gray;
+            font-size: 8pt;
+            font-weight: lighter;
+            text-decoration: underline;
+        }
+        .btn2{
+            margin-right: auto;
+            color: gray;
+            font-size: 8pt;
+            font-weight: lighter;
+            text-decoration: underline;
+        }
 }
