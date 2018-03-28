@@ -12,25 +12,8 @@ page-discounted-products {
         border: 2px solid peru
       }
     
-      .card-title {
-        position: absolute;
-        top: 80%;
-        font-size: 1.0em;
-        width: 100%;
-        font-weight: bold;
-        border-radius: 5px;
-        background-color: rgb(0, 0, 0);
-        opacity: 0.6;
-        color: #ffff;
-      }
-    
-      .card-subtitle {
-        font-size: 0.8em;
-        position: absolute;
-        top: 80%;
-        width: 100%;
-        color: #fff;
-      }
+     
+      
 
      
       .image1{
@@ -55,5 +38,22 @@ page-discounted-products {
         text-align: center;
         margin-top: 100pt;
     }
+
+    .product{
+      background-color: peru;
+      height: auto;
+      text-align: center;
+      padding: 6pt;
+      font-size: 10px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .col{
+      background-color: white;
+      border: 0.5px solid #b1925a;
+      padding: 0px;
+      margin: 0px;
+      }
 
 }

@@ -19,14 +19,20 @@
 </ion-header>
 
 <ion-content class="grid-full">
-      <ion-row responsive-sm>
-          <ion-col  *ngFor="let product of productsList" class="cell-1">
-
-              <ion-card>
-                  <img  (click)="goProductInfo(product.id,product.name)"  height="100 px" width="100 px" *ngFor="let image of product.images" [src]="image.src"/>
-                  <div class="card-title">{{ product.price }} SR</div>
-                </ion-card>
+    <ion-grid>
+        <ion-row>
+          <ion-col col-6 col-md-4 col-xl-3 *ngFor="let product of productsList" >
+            <ion-card class="block">
+              <img (click)="goProductInfo(product.id,product.name)" height="200 px" width="200 px" *ngFor="let image of product.images"
+              [src]="image.src" />
+              <div  class="product">
+                  <ion-icon ios="ios-pricetags" md="md-pricetags"></ion-icon> 
+                {{product.name}}
+                {{ product.price }} SR
+              </div>
               
+              </ion-card>
           </ion-col>
         </ion-row>
+      </ion-grid>
 </ion-content>

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController , ViewController } from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TabsPage } from '../tabs/tabs'
 import { AlertController, Config } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { SignUpPage } from '../sign-up/sign-up';
+import { IntroScreenPage } from '../intro-screen/intro-screen';
+import { Events } from 'ionic-angular';
 
 
 @IonicPage()
@@ -24,7 +26,7 @@ export class SignInPage {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private translate: TranslateService,
-    config: Config) {
+    config: Config ,public events: Events ,public viewCtrl : ViewController) {
 
     config.set('ios', 'backButtonText', this.translate.instant('BUTTONS.back'));
 
@@ -48,8 +50,17 @@ export class SignInPage {
       this.data = result;
       if (this.data.customers != null) {
 
-        this.navCtrl.push(TabsPage);
+        this.navCtrl.push(TabsPage).then(() => {
+          // first we find the index of the current view controller:
+          const index = this.viewCtrl.index;
+          // then we remove it from the navigation stack
+          this.navCtrl.remove(index);
+        });
 
+
+
+
+        this.events.publish('user:login');
         localStorage.setItem('customerid', this.data.customers[0].id);
         //Update Shopping cart Badge
         this.getShoppingCartCount(localStorage.getItem('customerid'));

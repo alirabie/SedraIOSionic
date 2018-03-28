@@ -81,13 +81,14 @@
     "DEL":"Delete Product",
     "address" :"Address",
     "add":" 255 King Fahd St , Al-Dmam - Al-Khobr",
-    "dayes" :"Working Days",
+    "dayes" :"Days For Delivery",
     "msg" :"Your Message",
     "send" :"Send",
     "donthaveaccount" :"Dont Have Account ?",
     "forgotpass" :"Forgot Password ?",
     "connection" : "Connection Error" ,
     "nonetwork" : "Please check your connection. And try again",
+    "addgiftcard" : "Add Gift Card",
     "FOO": "Foo {{test}}",
     "about":"Sedra is an e-shop consists of four sections the first for Flowers, the second for the various gifts, the third for chocolates and cakes, the fourth for seedlings and the ornamental trees"
 }

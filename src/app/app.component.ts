@@ -16,6 +16,7 @@ import { ProfilePage } from '../pages/profile/profile'
 import { ContactUsPage } from '../pages/contact-us/contact-us'
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { ViewController } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 
 
@@ -23,17 +24,17 @@ import { ViewController } from 'ionic-angular';
   templateUrl: 'app.html'
 })
 export class MyApp {
-
+  public rootPage: any = IntroScreenPage;
   @ViewChild('content') nav: NavController;
 
-  rootPage:any = IntroScreenPage;
+
   loggedOut=false;
   loggedIn=false;
   constructor(platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen , 
     private translateService: TranslateService,
-    public menuCtrl: MenuController) {
+    public menuCtrl: MenuController,public events: Events ) {
 
 
       if (localStorage.getItem('customerid') === null){
@@ -44,7 +45,9 @@ export class MyApp {
         this.loggedIn=true;
       }
 
-
+      events.subscribe('user:login', () => {
+        this.loginEvent();
+      });
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -83,18 +86,25 @@ export class MyApp {
 
   //Logout
   logout(){
-    localStorage.setItem('customerid',null);
+    localStorage.removeItem('customerid')
     localStorage.setItem('cartCount',"");
-    this.nav.popToRoot();
+    this.nav.setRoot(IntroScreenPage);
     this.menuCtrl.toggle();
     this.loggedOut=true;
     this.loggedIn=false;
+  }
+
+  loginEvent(){
+    this.loggedOut=false;
+    this.loggedIn=true;
   }
 
   login(){
     this.nav.push(SignInPage);
     this.menuCtrl.toggle();
   }
+
+  
 
   //Shopping Cart
   goShoppingCartPage() {
@@ -116,7 +126,6 @@ export class MyApp {
 
   //go home page
   gohome(){
-    
     this.nav.push(TabsPage).then(() => {
       // first we find the index of the current view controller:
       let viewctrl : ViewController;

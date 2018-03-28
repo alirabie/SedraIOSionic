@@ -76,7 +76,8 @@ page-product-info {
 
      .bg{
         background-image: url(../assets/imgs/floarbg.png);
-        display: flex;
+        background-size: cover;
+        height: 50%;
      }
 
      .trans{
@@ -85,7 +86,7 @@ page-product-info {
         color: white; 
      }
      .item{
-        margin:10px auto;
+        margin:5px auto;
         border-top: 0px;
       }
 
@@ -99,13 +100,23 @@ page-product-info {
       }
 
       .giftcard{
-          background-color:beige;
+          background-color:lightgray;
           border: 2px solid #b1925a;
           padding: 3pt;
-
-          
       }
 
-      
+      .photo-border {
+        border: 2px solid peru
 
+      }
+
+   
+      .giftcardbtn{
+         align-content: space-around;
+         background-color: gainsboro;
+         margin-left: auto;
+         margin-right: auto;
+         font-weight: bold;
+
+      }
 }

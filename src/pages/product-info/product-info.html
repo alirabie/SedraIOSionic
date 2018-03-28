@@ -65,21 +65,21 @@
 
 
   
-  <button ion-button full outline (click)="onButtonClick()">
-    <ion-icon padding ios="ios-add-circle" md="md-add-circle"></ion-icon>
-    <br> Add Gift Card 
+  <button class="giftcardbtn" ion-button color="primary" clear block (click)="onButtonClick()">
+      {{'addgiftcard' | translate}}
   </button>
   <div  *ngIf="buttonClicked" type="text" value="" class="">
-   
-    <ion-item>
-      <ion-label floating>{{ 'USER' | translate }}</ion-label>
-      <ion-input required="true" type="text"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label floating>{{ 'PASS' | translate }}</ion-label>
-      <ion-input  required="true" type="password"></ion-input>
-    </ion-item>
+      <ion-card>
+
+          <ion-card-header>
+            <h6 color="primary">Gift card</h6>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <!-- Add card content here! -->
+          </ion-card-content>
+        
+        </ion-card>
   </div>
 
 
@@ -97,8 +97,8 @@
         </ion-label>
     </ion-item>
      
-      <ion-item no-lines *ngFor="let product of relatedProducts">
-        <ion-thumbnail  item-start>
+      <ion-item  width="100%" height="20%" color="white" no-lines *ngFor="let product of relatedProducts">
+        <ion-thumbnail class="photo-border"  item-start>
           <img *ngFor="let image of product.images" [src]="image.src">
         </ion-thumbnail>
         <h2>{{product.name}}</h2>

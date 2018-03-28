@@ -5,6 +5,8 @@ page-home {
         max-height: 50%;
         text-align: center;
         color:white;
+      
+
        
       }
 
@@ -12,28 +14,18 @@ page-home {
       ion-card {
         position: relative;
         text-align: center;
-        border: 2px solid peru
+        border: 2px solid peru;
+        box-shadow: 10px 10px 5px grey;
       }
     
-      .card-title {
-        position: absolute;
-        top: 80%;
-        font-size: 1.0em;
-        width: 100%;
-        font-weight: bold;
-        border-radius: 5px;
-        background-color: rgb(0, 0, 0);
-        opacity: 0.6;
-        
-      }
+      .col{
+        background-color: white;
+        border: 0.5px solid #b1925a;
+        padding: 0px;
+        margin: 0px;
+        }
     
-      .card-subtitle {
-        font-size: 0.8em;
-        position: absolute;
-        top: 80%;
-        width: 100%;
-        color: #fff;
-      }
+     
 
 
       ion-select{
@@ -63,9 +55,29 @@ page-home {
             font-size: 8pt;
     }
 
+    .container {
+      text-align: center;
+      border: 2px solid peru
+  }
+
+  .container img {
+    object-fit: cover;
+    height: -webkit-fill-available;
+    
+  }
+ 
+
+  .product{
+    background-color: peru;
+    height: auto;
+    text-align: center;
+    padding: 6pt;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+ 
 
 
 
-
-   
 }
