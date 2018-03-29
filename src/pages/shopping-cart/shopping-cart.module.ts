@@ -4,7 +4,7 @@ import { ShoppingCartPage } from './shopping-cart';
 
 @NgModule({
   declarations: [
-    ShoppingCartPage,
+    // ShoppingCartPage,
   ],
   imports: [
     IonicPageModule.forChild(ShoppingCartPage),

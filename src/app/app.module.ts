@@ -30,6 +30,22 @@ import { ProfilePage } from '../pages/profile/profile'
 import { ContactUsPage } from '../pages/contact-us/contact-us'
 import { Network } from '@ionic-native/network';
 
+
+// import { AboutUsPageModule } from '../pages/about-us/about-us.module';
+// import { SettingsPageModule } from '../pages/settings/settings.module';
+// import { DiscountedProductsPageModule } from '../pages/discounted-products/discounted-products.module';
+// import { AccountActivePageModule } from '../pages/account-active/account-active.module';
+// import { ProfilePageModule } from '../pages/profile/profile.module';
+// import { ContactUsPageModule } from '../pages/contact-us/contact-us.module';
+// import { ShoppingCartPageModule } from '../pages/shopping-cart/shopping-cart.module';
+// import { FavoritesPageModule } from '../pages/favorites/favorites.module';
+// import { ProductInfoPageModule } from '../pages/product-info/product-info.module';
+// import { HomePageModule } from '../pages/home/home.module';
+// import { SignUpPageModule } from '../pages/sign-up/sign-up.module';
+// import { SignInPageModule } from '../pages/sign-in/sign-in.module';
+// import { IntroScreenPageModule } from '../pages/intro-screen/intro-screen.module';
+// import { PlantsPageModule } from '../pages/plants/plants.module';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http ,'./assets/i18n/', '.json');
 }
@@ -60,6 +76,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    
+ 
+
+
+
+
+
     IonicModule.forRoot(MyApp),
     TranslateModule.forRoot({
       loader: {

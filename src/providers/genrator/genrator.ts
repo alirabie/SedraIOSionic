@@ -169,4 +169,19 @@ export class GenratorProvider {
   getCustomerInfo(id){
     return this.http.get(this.url+"api/customers/"+id).map((res : Response)=>res.json());
   }
+
+
+  contactUs(data) {
+    return new Promise((resolve, reject) => {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http.post(this.url+'api/contactus', JSON.stringify(data), {headers: headers})
+          .subscribe(res => {
+            resolve(res.json());
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+
 }

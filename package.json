@@ -39,7 +39,8 @@
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18",
     "cordova-plugin-x-socialsharing": "~5.3.2",
-    "cordova-ios": "~4.5.4"
+    "cordova-ios": "~4.5.4",
+    "cordova-plugin-network-information": "~2.0.1"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
@@ -58,8 +59,8 @@
       "cordova-plugin-network-information": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

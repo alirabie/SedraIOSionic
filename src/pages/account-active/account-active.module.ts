@@ -4,7 +4,7 @@ import { AccountActivePage } from './account-active';
 
 @NgModule({
   declarations: [
-    AccountActivePage,
+    // AccountActivePage,
   ],
   imports: [
     IonicPageModule.forChild(AccountActivePage),

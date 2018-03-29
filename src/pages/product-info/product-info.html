@@ -36,25 +36,25 @@
       <ion-row justify-content-center align-items-center style="height: 100%">
          
 
-          <button ion-button icon-only (click)="up()">
+          <button class="cartbutton" ion-button icon-only (click)="up()">
               <ion-icon ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon>
           </button>
           {{count}} 
-          <button ion-button icon-only (click)="dwon()">
+          <button class="cartbutton" ion-button icon-only (click)="dwon()">
               <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
           </button>
-          <ion-col width-50>
+          <ion-col  width-50>
               {{count*product.price}} SR
           </ion-col>
           <ion-col width-50>
            
-                <button #myButton ion-button icon-only (click)="toggleIcon()">
+                <button class="cartbutton" #myButton ion-button icon-only (click)="toggleIcon()">
                     <ion-icon [name]="buttonIcon"></ion-icon>
                   </button>
            
           </ion-col>
 
-          <button class="cartbutton"  ion-button icon-only (click)="addToCart()">
+          <button class="cartbutton2"  ion-button icon-only (click)="addToCart()">
               <ion-icon  ios="ios-cart" md="md-cart"></ion-icon>
           </button>
       </ion-row>
@@ -70,9 +70,15 @@
   </button>
   <div  *ngIf="buttonClicked" type="text" value="" class="">
       <ion-card>
-
+          <img class="image1" src="./assets/imgs/giftribbon.png" />
           <ion-card-header>
-            <h6 color="primary">Gift card</h6>
+            
+                <h6 color="primary">Gift card</h6>
+               
+           
+          
+           
+            
           </ion-card-header>
         
           <ion-card-content>

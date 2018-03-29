@@ -89,6 +89,8 @@
     "connection" : "Connection Error" ,
     "nonetwork" : "Please check your connection. And try again",
     "addgiftcard" : "Add Gift Card",
+    "subject":"Subject",
+    "donsend":"Message Sent",
     "FOO": "Foo {{test}}",
     "about":"Sedra is an e-shop consists of four sections the first for Flowers, the second for the various gifts, the third for chocolates and cakes, the fourth for seedlings and the ornamental trees"
 }

@@ -52,7 +52,7 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      translateService.setDefaultLang('en');
+      translateService.setDefaultLang('ar');
       //translateService.use('ar');  
       
      // statusBar.backgroundColorByHexString('#ffffff');
@@ -159,8 +159,14 @@ export class MyApp {
 
   //Go Contact Us
   goContactUs(){
-    this.nav.push(ContactUsPage);
-    this.menuCtrl.toggle();
+    if (localStorage.getItem('customerid') === null){
+      this.nav.push(SignInPage);
+      this.menuCtrl.toggle();
+    }else{
+      this.nav.push(ContactUsPage);
+      this.menuCtrl.toggle();
+    }
+   
   }
 
 

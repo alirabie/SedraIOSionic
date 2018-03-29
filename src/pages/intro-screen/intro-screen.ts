@@ -5,7 +5,7 @@ import { SignInPage } from '../sign-in/sign-in'
 import { SignUpPage } from '../sign-up/sign-up'
 import { TranslateService } from '@ngx-translate/core';
 import { Network } from '@ionic-native/network';
-import { IntroScreenPageModule } from '../intro-screen/intro-screen.module'
+
 
 
 
@@ -21,12 +21,10 @@ export class IntroScreenPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public translate: TranslateService, public network: Network, public alertCtrl: AlertController, private viewCtrl: ViewController) {
 
-    translate.use("ar");
+    translate.use(localStorage.getItem('lang'));
+    console.log(localStorage.getItem('lang'));
 
-
-
-
-
+  
   }
 
   ionViewDidEnter() {
@@ -71,6 +69,7 @@ export class IntroScreenPage {
 
   onChange(e) {
     this.translate.use(e);
+    localStorage.setItem('lang',e);
   }
 
 

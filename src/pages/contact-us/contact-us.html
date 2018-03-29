@@ -9,27 +9,45 @@
 
 
 <ion-content >
-  <div>
-  <ion-list>
-    <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
 
 
-  
-    <ion-item padding>
-      <ion-label stacked>{{'msg' | translate}}</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  
-  </ion-list>
 
-  <button padding ion-button full>{{'send' | translate}}</button>
-</div>
+    <form [formGroup]="form" (ngSubmit)="SaveChanges(form.value)">
+        <ion-list no-line>
+    
+            <ion-item class="colr">
+                <ion-label color="primary" floating>{{'subject' | translate}}</ion-label>
+                <ion-input formControlName="subject" type="text"></ion-input>
+              </ion-item>
+              <span *ngIf="form.controls['subject'].hasError('required') && form.controls['subject'].touched">
+                  <span [hidden]="!form.controls['subject'].errors.required">
+                      <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                  </span>
+              </span>
+              
+  
+
+                    <ion-item padding>
+                        <ion-label stacked>{{'msg' | translate}}</ion-label>
+                        <ion-input formControlName="message" type="text"></ion-input>
+                      </ion-item>
+                      <span *ngIf="form.controls['message'].hasError('required') && form.controls['message'].touched">
+                          <span [hidden]="!form.controls['message'].errors.required">
+                              <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+                          </span>
+                      </span>
+                   
+  
+    
+        </ion-list>
+        <div>
+          <button ion-button color="primary" [disabled]="!form.valid" block>
+            <span class="fontColor">{{'send' | translate}}</span>
+          </button>
+        </div>
+      </form>
+
+
+
+
 </ion-content>

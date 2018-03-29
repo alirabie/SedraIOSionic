@@ -69,9 +69,19 @@ page-product-info {
          font-size: 10pt;
      }
 
+     .cartbutton2{
+      
+        margin-right: 15px;
+        background: none !important;
+        background-color: none !important;
+        box-shadow: none !important;
+     }
    
      .cartbutton{
-        margin-right: 15px;
+      
+        background: none !important;
+        background-color: none !important;
+        box-shadow: none !important;
      }
 
      .bg{
@@ -119,4 +129,12 @@ page-product-info {
          font-weight: bold;
 
       }
+
+      .image1{
+        position: absolute;
+        right: 10px;
+        width: 40pt;
+        display: block;
+       
+    }
 }

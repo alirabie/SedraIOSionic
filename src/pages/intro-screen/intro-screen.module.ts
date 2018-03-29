@@ -1,10 +1,11 @@
+
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { IntroScreenPage } from './intro-screen';
 
 @NgModule({
   declarations: [
-    IntroScreenPage,
+    // IntroScreenPage,
   ],
   imports: [
     IonicPageModule.forChild(IntroScreenPage),
