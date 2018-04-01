@@ -36,6 +36,7 @@ export class ProductInfoPage {
   dayTimes =[];
   timeFrom ="";
   timeTo ="";
+ 
   schadulId ="";
 
 
@@ -70,6 +71,7 @@ export class ProductInfoPage {
 
   submitAttempt: boolean = false;
   public addressForm: FormGroup;
+  public giftMessageForm :FormGroup;
   public DelivirdatabuttonClicked: boolean = false; //Whatever you want to initialise it as
   public giftMessagebuttonClicked: boolean = false; //Whatever you want to initialise it as
 
@@ -115,13 +117,19 @@ export class ProductInfoPage {
     this.addressForm = _FB.group({
       country: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
       citye: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
-      phone: ['', Validators.compose([Validators.maxLength(14), Validators.required, Validators.minLength(9)])],
-      street: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      phone: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      street: ['', Validators.compose([Validators.maxLength(50), Validators.required])],
       bulidingNo: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
       notes: ['', Validators.compose([Validators.maxLength(20), Validators.required])]
     });
 
 
+    this.giftMessageForm =_FB.group({
+      message: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      reciver: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      sender: ['',  Validators.compose([Validators.maxLength(20), Validators.required])],
+      senderPhoneNum: ['',  Validators.compose([Validators.maxLength(20), Validators.required])],
+    });
 
 
 
@@ -244,15 +252,27 @@ export class ProductInfoPage {
 
       if (!this.addressForm.valid) {
 
+
         let alert = this.alertCtrl.create({
           title: this.translate.instant('PAGE_TITLE.dilog'),
-          subTitle: "Delevier info not valid",
+          subTitle: this.translate.instant('deliverinfoerr'),
           buttons: [this.translate.instant('BUTTONS.dissmiss')]
         });
         alert.present();
         this.DelivirdatabuttonClicked = true;
 
-      } else {
+      } else if (this.selectedDate==""||this.schadulId=="") { 
+
+
+        let alert = this.alertCtrl.create({
+          title: this.translate.instant('PAGE_TITLE.dilog'),
+          subTitle: this.translate.instant('timeinfoerr'),
+          buttons: [this.translate.instant('BUTTONS.dissmiss')]
+        });
+        alert.present();
+        this.DelivirdatabuttonClicked = true;
+
+      }else{
 
         console.log(this.addressForm.value)
         let cartItem = {
@@ -274,6 +294,15 @@ export class ProductInfoPage {
         this.genrator.addToShoppingCart(cartItem).then((result) => {
 
           if (result['shopping_carts'] != null) {
+
+
+
+            //Add Presnt Card using cart Item ID
+            this.addPresnetCard(0);
+
+
+
+
 
             this.getShoppingCartCount(localStorage.getItem("customerid"));
             let alert = this.alertCtrl.create({
@@ -356,7 +385,6 @@ export class ProductInfoPage {
 
     console.log(this.day);
     console.log(this.selectedDate);
-
     this.getTimesByDay(this.day);
 
 
@@ -392,6 +420,97 @@ export class ProductInfoPage {
 
     console.log(this.schadulId);
     
+  }
+
+
+  addPresnetCard(cartItemid){
+
+    if(!this.giftMessageForm.valid){
+      let presntCard = {
+        order_card : {
+          cards: [
+            {
+              cardaddress: {
+                 country_id : this.countryid+"",
+                state_id : this.cityId+"",
+                building_no : this.addressForm.value.bulidingNo+"",
+                 note : this.addressForm.value.notes+"",
+                 reciever_phone_no : this.addressForm.value.phone+ "",
+                 street : this.addressForm.value.street+""
+              },
+              cardmessage : {
+                 message : null,
+                 reciever : null,
+                 sender : null,
+                 sender_phone_no : null
+              },
+               cardschedule : {
+                 delivery_date : this.selectedDate+"",
+                 schedule_id : this.schadulId+""
+              },
+               cart_item_id : cartItemid+"",
+               order_id : null,
+               customer_id : localStorage.getItem('customerid')+""
+            }
+          ],
+           order_id : null
+        }
+       }
+  
+    
+       //Fire Add present card sevice
+       console.log(presntCard);
+
+    }else{
+
+        let presntCard = {
+          order_card : {
+            cards: [
+              {
+                cardaddress: {
+                   country_id : this.countryid+"",
+                  state_id : this.cityId+"",
+                  building_no : this.addressForm.value.bulidingNo+"",
+                   note : this.addressForm.value.notes+"",
+                   reciever_phone_no : this.addressForm.value.phone+ "",
+                   street : this.addressForm.value.street+""
+                },
+                cardmessage : {
+                   message : this.giftMessageForm.value.message,
+                   reciever : this.giftMessageForm.value.reciver,
+                   sender : this.giftMessageForm.value.sender,
+                   sender_phone_no : this.giftMessageForm.value.senderPhoneNum
+                },
+                 cardschedule : {
+                   delivery_date : this.selectedDate+"",
+                   schedule_id : this.schadulId+""
+                },
+                 cart_item_id : "",
+                 order_id : null,
+                 customer_id : localStorage.getItem('customerid')+""
+              }
+            ],
+             order_id : null
+          }
+         }
+    
+      
+         console.log(presntCard);
+  
+
+
+
+
+
+
+
+    }
+  
+
+
+
+     
+
   }
 
 }

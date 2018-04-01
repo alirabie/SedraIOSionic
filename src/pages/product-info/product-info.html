@@ -66,20 +66,22 @@
 
 
   <button class="giftcardbtn" ion-button color="primary" clear block (click)="DeliverButtonClick()">
-  بيانات التوصيل
+    {{'deliverdata' | translate}}
   </button>
   <div *ngIf="DelivirdatabuttonClicked" type="text" value="" class="">
     <ion-card>
-      <img class="image1" src="./assets/imgs/giftribbon.png" />
+
+
       <ion-card-header>
-        <h6 color="primary">عنوان التوصيل</h6>
+        <span>
+          <ion-icon color="primary" ios="ios-pin-outline" md="md-pin" item-left></ion-icon> &nbsp; {{'deliveraddress' | translate}} &nbsp; &nbsp; &nbsp; </span>
       </ion-card-header>
 
       <ion-card-content>
         <form [formGroup]="addressForm">
           <ion-list no-line>
 
-            <ion-item class="colr">
+            <ion-item no-lines class="colr">
               <ion-label color="primary" floating>{{ 'COUNTRY' | translate }}</ion-label>
               <ion-select formControlName="country" interface="popover" [(ngModel)]="cntry">
                 <ion-option *ngFor="let country of countriesList" (ionSelect)="getCities(country.id)" (ionSelect)="setCntryId(country.id)">{{country.name}}</ion-option>
@@ -91,7 +93,7 @@
               </span>
             </span>
 
-            <ion-item class="colr">
+            <ion-item no-lines class="colr">
               <ion-label color="primary" floating>{{ 'CITY' | translate }}</ion-label>
               <ion-select formControlName="citye" interface="popover" [(ngModel)]="City">
                 <ion-option *ngFor="let city of citiesList" (ionSelect)="setCityid(city.id)">{{city.name}}</ion-option>
@@ -103,8 +105,8 @@
               </span>
             </span>
 
-            <ion-item class="colr">
-              <ion-label color="primary" floating>{{'SIgNUP.address' | translate}}</ion-label>
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'street' | translate}}</ion-label>
               <ion-input formControlName="street" type="text"></ion-input>
             </ion-item>
             <span *ngIf="addressForm.controls['street'].hasError('required') && addressForm.controls['street'].touched">
@@ -113,8 +115,8 @@
               </span>
             </span>
 
-            <ion-item class="colr">
-              <ion-label color="primary" floating>Buliding No</ion-label>
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'bulidingno' | translate}}</ion-label>
               <ion-input formControlName="bulidingNo" type="text"></ion-input>
             </ion-item>
             <span *ngIf="addressForm.controls['bulidingNo'].hasError('required') && addressForm.controls['bulidingNo'].touched">
@@ -122,9 +124,9 @@
                 <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
               </span>
             </span>
-        
-            <ion-item class="colr">
-              <ion-label color="primary" floating>Notes</ion-label>
+
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'notes' | translate}}</ion-label>
               <ion-input formControlName="notes" type="text"></ion-input>
             </ion-item>
             <span *ngIf="addressForm.controls['notes'].hasError('required') && addressForm.controls['notes'].touched">
@@ -133,8 +135,8 @@
               </span>
             </span>
 
-            <ion-item class="colr">
-              <ion-label color="primary" floating>{{'SIgNUP.phone' | translate}}</ion-label>
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'reciverphonenum' | translate}}</ion-label>
               <ion-input formControlName="phone" type="text"></ion-input>
             </ion-item>
             <span *ngIf="addressForm.controls['phone'].hasError('required') && addressForm.controls['phone'].touched">
@@ -143,7 +145,7 @@
               </span>
             </span>
           </ion-list>
-        
+
         </form>
 
 
@@ -154,70 +156,118 @@
 
 
     <ion-card>
-      <img class="image1" src="./assets/imgs/giftribbon.png" />
       <ion-card-header>
-        <h6 color="primary">وقت التوصيل</h6>
+        <span>
+          <ion-icon color="primary" ios="ios-calendar-outline" md="md-calendar" item-left></ion-icon> &nbsp; {{'delivertime' | translate}} &nbsp; &nbsp; &nbsp; </span>
       </ion-card-header>
-    
+
       <ion-card-content>
-          <!-- [localeStrings]="localeString" -->
-        <span ion-datepicker class="datepic"  [(value)]="localDate" [min]="minDate"  (ionChanged)="dateselected($event)" clear class="ScheduleDate">
-          <span> <ion-icon name="clipboard" item-left ></ion-icon> {{localDate | date}} &nbsp; &nbsp;  &nbsp;  &nbsp;  <span *ngIf="dayTimes.length !== 0">{{timeFrom | date: 'hh:mm a'}}   {{timeTo | date: 'hh:mm a'}}</span>  </span> 
+        <!-- [localeStrings]="localeString" -->
+        <span ion-datepicker class="datepic" [(value)]="localDate" [min]="minDate" (ionChanged)="dateselected($event)" clear class="ScheduleDate">
+          <span>
+            <ion-icon name="clipboard" item-left></ion-icon> {{localDate | date}} &nbsp; &nbsp; &nbsp; &nbsp;
+            <span *ngIf="dayTimes.length !== 0">{{timeFrom | date: 'hh:mm a'}} {{timeTo | date: 'hh:mm a'}}</span>
+          </span>
         </span>
 
 
-        
-        <div >
-            <ion-grid>
-                <ion-row>
-                  <ion-col class="timegrid" col-3 col-md-4 col-xl-3 *ngFor="let time of dayTimes" >
-                   
-                        <button class="timBtn" (click)="onTimeScSelected(time)" ion-button  clear>
-                            <div  class="product">
-                                <div>
-                                    {{ time.from | date: 'hh:mm a'  }}
-                                </div>
-                                <div>
-                                    {{time.to | date: 'hh:mm a' }}
-                                </div>
-                                  
-                              </div> 
-                        </button>
-                      
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
+
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="timegrid" col-3 col-md-4 col-xl-3 *ngFor="let time of dayTimes">
+
+                <button class="timBtn" (click)="onTimeScSelected(time)" ion-button clear>
+                  <div class="product">
+                    <div>
+                      {{ time.from | date: 'hh:mm a' }}
+                    </div>
+                    <div>
+                      {{time.to | date: 'hh:mm a' }}
+                    </div>
+
+                  </div>
+                </button>
+
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
         </div>
 
-              
 
 
 
-            
-       
+
+
+
       </ion-card-content>
 
     </ion-card>
   </div>
 
   <button class="giftcardbtn" ion-button color="primary" clear block (click)="giftButtonClick()">
-     كارت الاهداء
-    </button>
-    <div *ngIf="giftMessagebuttonClicked" type="text" value="" class="">
-      <ion-card>
-        <img class="image1" src="./assets/imgs/giftribbon.png" />
-        <ion-card-header>
-          <h6 color="primary">رسالة الاهداء</h6>
-        </ion-card-header>
-  
-        <ion-card-content>
-  
-        </ion-card-content>
-  
-      </ion-card>
+      {{'addGiftCard' | translate}}
+  </button>
+  <div *ngIf="giftMessagebuttonClicked" type="text" value="" class="">
+    <ion-card>
+      <img class="image1" src="./assets/imgs/giftribbon.png" />
+      <ion-card-header>
+         <span> <ion-icon color="primary" ios="ios-mail-outline" md="md-mail" item-left></ion-icon> &nbsp; {{'giftmessage' | translate}} &nbsp; &nbsp; &nbsp; </span>
+      </ion-card-header>
 
-    </div>
+      <ion-card-content>
+
+        <form [formGroup]="giftMessageForm">
+          <ion-list>
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'message' | translate}}</ion-label>
+              <ion-input formControlName="message" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="giftMessageForm.controls['message'].hasError('required') && giftMessageForm.controls['message'].touched">
+              <span [hidden]="!giftMessageForm.controls['message'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'reciever' | translate}}</ion-label>
+              <ion-input formControlName="reciver" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="giftMessageForm.controls['reciver'].hasError('required') && giftMessageForm.controls['reciver'].touched">
+              <span [hidden]="!giftMessageForm.controls['reciver'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'sender' | translate}}</ion-label>
+              <ion-input formControlName="sender" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="giftMessageForm.controls['sender'].hasError('required') && giftMessageForm.controls['sender'].touched">
+              <span [hidden]="!giftMessageForm.controls['sender'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+
+            <ion-item no-lines class="colr">
+              <ion-label color="primary" floating>{{'sender_phone_no' | translate}}</ion-label>
+              <ion-input formControlName="senderPhoneNum" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="giftMessageForm.controls['senderPhoneNum'].hasError('required') && giftMessageForm.controls['senderPhoneNum'].touched">
+              <span [hidden]="!giftMessageForm.controls['senderPhoneNum'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+          </ion-list>
+
+        </form>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
 
 
 

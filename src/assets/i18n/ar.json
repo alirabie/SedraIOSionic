@@ -86,5 +86,23 @@
     "addgiftcard" : "إضافة كارت هدايا",
     "subject":"الموضوع",
     "donsend":"تم الإرسال",
+    "deliverdata":"بيانات التوصيل",
+    "addGiftCard":"أضف كارت إهداء",
+    "deliveraddress":"عنوان التوصيل",
+    "delivertime":"موعد التوصيل",
+    "giftmessage":"رسالة الإهداء",
+    "street":"الشارع",
+    "bulidingno":"رقم المبنى",
+    "notes":"ملاحظات",
+    "reciverphonenum":"رقم جوال المستلم",
+    "message":"الرسالة",
+    "sender":"المرسل",
+    "reciever":"المستلم",
+    "sender_phone_no":"رقم جوال المرسل",
+    "deliverinfoerr":"بيانات التوصيل غير صحيحة",
+    "timeinfoerr":"من فضلك إختر وقت وتاريخ التسليم",
+
+
+
     "FOO": "Foo {{test}}"
 }
