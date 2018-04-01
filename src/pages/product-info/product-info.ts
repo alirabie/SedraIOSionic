@@ -6,6 +6,8 @@ import { SignInPage } from '../sign-in/sign-in'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ShoppingCartPage } from '../shopping-cart/shopping-cart';
 import { TabsPage } from '../tabs/tabs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePickerModule } from 'ion-datepicker';
 
 
 @IonicPage()
@@ -14,25 +16,74 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'product-info.html',
 })
 export class ProductInfoPage {
+
+  public localDate: Date = new Date();
+  public minDate: Date = new Date();
+  public day: any;
+  public selectedDate: any;
+  buttonColor : string;
+
+
+
+  public localeString = {
+    monday: true,
+    //Translate this later
+    weekdays: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+  };
+
+  vendorSchduals = [];
+  dayTimes =[];
+  timeFrom ="";
+  timeTo ="";
+  schadulId ="";
+
+
+
+
+
+
+
+
   count = 1;
   id: String = "";
   name: string = "";
   productInfo = [];
   relatedProducts = [];
-  min ="" ;
-  max ="" ;
+  min = "";
+  max = "";
 
   buttonIcon: string = "heart";
 
-  
+  public countriesList = [];
+  public citiesList = [];
 
-  public buttonClicked: boolean = false; //Whatever you want to initialise it as
+  countryid: any;
+  cityId: any;
+  bulidingNo: any;
+  note: any;
+  phonenum: any;
+  street: any;
 
-  public onButtonClick() {
+  cntry: string = "";
+  City: string = "";
 
-      this.buttonClicked = !this.buttonClicked;
+  submitAttempt: boolean = false;
+  public addressForm: FormGroup;
+  public DelivirdatabuttonClicked: boolean = false; //Whatever you want to initialise it as
+  public giftMessagebuttonClicked: boolean = false; //Whatever you want to initialise it as
+
+
+
+  public DeliverButtonClick() {
+    this.DelivirdatabuttonClicked = !this.DelivirdatabuttonClicked;
   }
 
+
+
+  public giftButtonClick() {
+    this.giftMessagebuttonClicked = !this.giftMessagebuttonClicked;
+  }
 
 
 
@@ -47,7 +98,8 @@ export class ProductInfoPage {
     public alertCtrl: AlertController,
     private translate: TranslateService,
     config: Config,
-    public SocialSharing: SocialSharing) {
+    public SocialSharing: SocialSharing,
+    private _FB: FormBuilder) {
 
 
 
@@ -58,6 +110,16 @@ export class ProductInfoPage {
     config.set('ios', 'backButtonText', this.translate.instant('BUTTONS.back'));
 
 
+    this.getCountries();
+    //Card Address Form
+    this.addressForm = _FB.group({
+      country: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      citye: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      phone: ['', Validators.compose([Validators.maxLength(14), Validators.required, Validators.minLength(9)])],
+      street: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      bulidingNo: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      notes: ['', Validators.compose([Validators.maxLength(20), Validators.required])]
+    });
 
 
 
@@ -73,13 +135,14 @@ export class ProductInfoPage {
   getProductInf() {
     this.genrator.getProudctInfo(this.id).subscribe((data) => {
       this.productInfo = data['products'];
-       //Get Max and min Preparing product
-       let obj = this.productInfo['0'];
-       let attr = obj['attributes'];
-       let max = attr['0'];
-       let min =attr['1'];
-       this.min=min.default_value;
-       this.max=max.default_value;
+      //Get Max and min Preparing product
+      let obj = this.productInfo['0'];
+      let attr = obj['attributes'];
+      let max = attr['0'];
+      let min = attr['1'];
+      this.min = min.default_value;
+      this.max = max.default_value;
+      this.getVendorSchadules();
     });
   }
 
@@ -107,6 +170,27 @@ export class ProductInfoPage {
     }
   }
 
+  getCountries() {
+    return this.genrator.getCountries().subscribe((data) => {
+      this.countriesList = data['countries'];
+    });
+
+  }
+
+  getCities(id) {
+    return this.genrator.getCities(id).subscribe((data) => {
+      this.citiesList = data['states'];
+    });
+  }
+
+  setCntryId(id) {
+    this.countryid = id;
+  }
+
+  setCityid(id) {
+    this.cityId = id;
+  }
+
 
   getRelatedProducts() {
     this.genrator.getRelatedProducts(this.id).subscribe((data) => {
@@ -125,6 +209,7 @@ export class ProductInfoPage {
   }
 
   share() {
+
 
 
     let st: string = encodeURIComponent(this.name.replace(' ', '-'))
@@ -157,63 +242,74 @@ export class ProductInfoPage {
       this.navCtrl.push(SignInPage);
     } else {
 
-      let cartItem = {
-        shopping_cart_item: {
-          id: "null",
-          customer_entered_price: "0",
-          quantity: "0",
-          created_on_utc: "2017-06-13T16:15:47-04:00",
-          updated_on_utc: "2017-06-13T16:15:47-04:00",
-          shopping_cart_type: "1",
-          product_id: '0',
-          customer_id: '0'
+      if (!this.addressForm.valid) {
+
+        let alert = this.alertCtrl.create({
+          title: this.translate.instant('PAGE_TITLE.dilog'),
+          subTitle: "Delevier info not valid",
+          buttons: [this.translate.instant('BUTTONS.dissmiss')]
+        });
+        alert.present();
+        this.DelivirdatabuttonClicked = true;
+
+      } else {
+
+        console.log(this.addressForm.value)
+        let cartItem = {
+          shopping_cart_item: {
+            id: "null",
+            customer_entered_price: "0",
+            quantity: "0",
+            created_on_utc: "2017-06-13T16:15:47-04:00",
+            updated_on_utc: "2017-06-13T16:15:47-04:00",
+            shopping_cart_type: "1",
+            product_id: '0',
+            customer_id: '0'
+          }
         }
+        cartItem.shopping_cart_item.quantity = this.count + "";
+        cartItem.shopping_cart_item.product_id = this.id + "";
+        cartItem.shopping_cart_item.customer_id = localStorage.getItem("customerid");
+
+        this.genrator.addToShoppingCart(cartItem).then((result) => {
+
+          if (result['shopping_carts'] != null) {
+
+            this.getShoppingCartCount(localStorage.getItem("customerid"));
+            let alert = this.alertCtrl.create({
+              title: this.translate.instant('PAGE_TITLE.dilog'),
+              subTitle: this.translate.instant('ADEDD'),
+              buttons: [
+                {
+                  text: this.translate.instant('CONTINE'),
+                  handler: () => {
+                    //ٌResume Shopping
+                    this.navCtrl.popTo(TabsPage);
+
+                    console.log(localStorage.getItem("cartCount"))
+                  }
+                },
+                {
+                  text: this.translate.instant('END'),
+                  handler: () => {
+
+                    //Go to shopping cart
+                    this.navCtrl.push(ShoppingCartPage);
+                  }
+                }
+              ]
+            });
+            alert.present();
+
+            console.log(result);
+          }
+
+        }, (err) => {
+
+          console.log(err);
+
+        });
       }
-      cartItem.shopping_cart_item.quantity = this.count + "";
-      cartItem.shopping_cart_item.product_id = this.id + "";
-      cartItem.shopping_cart_item.customer_id = localStorage.getItem("customerid");
-
-      this.genrator.addToShoppingCart(cartItem).then((result) => {
-
-        if (result['shopping_carts'] != null) {
-
-          this.getShoppingCartCount(localStorage.getItem("customerid"));
-
-        
-
-          let alert = this.alertCtrl.create({
-            title: this.translate.instant('PAGE_TITLE.dilog'),
-            subTitle: this.translate.instant('ADEDD'),
-            buttons: [
-              {
-                text: this.translate.instant('CONTINE'),
-                handler: () => {
-                  //ٌResume Shopping
-                  this.navCtrl.popTo(TabsPage);
-
-                  console.log(localStorage.getItem("cartCount"))
-                }
-              },
-              {
-                text: this.translate.instant('END'),
-                handler: () => {
-
-                  //Go to shopping cart
-                  this.navCtrl.push(ShoppingCartPage);
-                }
-              }
-            ]
-          });
-          alert.present();
-
-          console.log(result);
-        }
-
-      }, (err) => {
-
-        console.log(err);
-
-      });
     }
   }
 
@@ -221,11 +317,81 @@ export class ProductInfoPage {
 
   getShoppingCartCount(custId) {
     this.genrator.getShoppingCartItems(custId).subscribe((data) => {
-      let items  = data['shopping_carts'];
+      let items = data['shopping_carts'];
       localStorage.setItem("cartCount", items.length + "");
     });
   }
 
- 
+
+
+  getVendorSchadules() {
+
+    let obj = this.productInfo['0'];
+
+    this.genrator.getVendorSchadule(obj.vendor_id).subscribe((data) => {
+
+      this.vendorSchduals = data['deliveryschedules'];
+      console.log(data['deliveryschedules']);
+
+    });
+
+  }
+
+
+
+
+
+
+
+
+  dateselected(data) {
+    let s: string = data;
+    let selectedDate = new Date(s);
+    this.timeFrom ="";
+    this.timeTo="";
+    this.schadulId="";
+
+    this.day = selectedDate.getDay();
+    this.selectedDate = data;
+
+    console.log(this.day);
+    console.log(this.selectedDate);
+
+    this.getTimesByDay(this.day);
+
+
+  }
+
+
+  getTimesByDay(day) {
+    this.dayTimes = [];
+    for (let i = 0; i < this.vendorSchduals.length; i++) {
+      let obj = this.vendorSchduals[i];
+      if (obj.day == day) {
+        let time = {
+          id: "",
+          from: "",
+          to: ""
+        }
+        time.id = obj.id;
+        time.from = obj.timefrom;
+        time.to = obj.timeto;
+        console.log(time)
+        this.dayTimes.push(time)
+      }
+
+    }
+    console.log(this.dayTimes)
+  }
+
+  onTimeScSelected(time) {
+
+    this.schadulId=time.id;
+    this.timeFrom=time.from;
+    this.timeTo =time.to;
+
+    console.log(this.schadulId);
+    
+  }
 
 }

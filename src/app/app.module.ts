@@ -29,6 +29,8 @@ import { AccountActivePage } from '../pages/account-active/account-active'
 import { ProfilePage } from '../pages/profile/profile'
 import { ContactUsPage } from '../pages/contact-us/contact-us'
 import { Network } from '@ionic-native/network';
+import { DatePicker } from '@ionic-native/date-picker';
+import { DatePickerModule } from 'ion-datepicker';
 
 
 // import { AboutUsPageModule } from '../pages/about-us/about-us.module';
@@ -76,12 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
-    
- 
-
-
-
-
+    DatePickerModule,
 
     IonicModule.forRoot(MyApp),
     TranslateModule.forRoot({
@@ -116,6 +113,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactUsPage
   ],
   providers: [
+    DatePicker,
     StatusBar,
     SocialSharing,
     SplashScreen,

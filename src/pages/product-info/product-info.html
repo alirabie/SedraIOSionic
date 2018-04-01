@@ -1,11 +1,11 @@
 <ion-header>
 
   <ion-navbar color="primary">
-   
+
 
     <ion-buttons right>
       <button ion-button icon-only (click)="share()">
-          <ion-icon ios="ios-share-outline" md="md-share" ></ion-icon>
+        <ion-icon ios="ios-share-outline" md="md-share"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -25,69 +25,199 @@
       <ion-slide *ngFor="let image of product.images">
         <img class="img" height="100 px" width="100 px" [src]="image.src">
       </ion-slide>
-    </ion-slides>  
+    </ion-slides>
   </div>
   <div class="prepare">
-      {{'dayes' | translate}} {{min}} - {{max}} 
-    </div>
-  <div  class="price-bar"  *ngFor="let product of productInfo">
+    {{'dayes' | translate}} {{min}} - {{max}}
+  </div>
+  <div class="price-bar" *ngFor="let product of productInfo">
 
 
-      <ion-row justify-content-center align-items-center style="height: 100%">
-         
+    <ion-row justify-content-center align-items-center style="height: 100%">
 
-          <button class="cartbutton" ion-button icon-only (click)="up()">
-              <ion-icon ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon>
-          </button>
-          {{count}} 
-          <button class="cartbutton" ion-button icon-only (click)="dwon()">
-              <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
-          </button>
-          <ion-col  width-50>
-              {{count*product.price}} SR
-          </ion-col>
-          <ion-col width-50>
-           
-                <button class="cartbutton" #myButton ion-button icon-only (click)="toggleIcon()">
-                    <ion-icon [name]="buttonIcon"></ion-icon>
-                  </button>
-           
-          </ion-col>
 
-          <button class="cartbutton2"  ion-button icon-only (click)="addToCart()">
-              <ion-icon  ios="ios-cart" md="md-cart"></ion-icon>
-          </button>
-      </ion-row>
+      <button class="cartbutton" ion-button icon-only (click)="up()">
+        <ion-icon ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon>
+      </button>
+      {{count}}
+      <button class="cartbutton" ion-button icon-only (click)="dwon()">
+        <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+      </button>
+      <ion-col width-50>
+        {{count*product.price}} SR
+      </ion-col>
+      <ion-col width-50>
+
+        <button class="cartbutton" #myButton ion-button icon-only (click)="toggleIcon()">
+          <ion-icon [name]="buttonIcon"></ion-icon>
+        </button>
+
+      </ion-col>
+
+      <button class="cartbutton2" ion-button icon-only (click)="addToCart()">
+        <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+      </button>
+    </ion-row>
 
   </div>
- 
 
 
 
-  
-  <button class="giftcardbtn" ion-button color="primary" clear block (click)="onButtonClick()">
-      {{'addgiftcard' | translate}}
+
+
+  <button class="giftcardbtn" ion-button color="primary" clear block (click)="DeliverButtonClick()">
+  بيانات التوصيل
   </button>
-  <div  *ngIf="buttonClicked" type="text" value="" class="">
-      <ion-card>
-          <img class="image1" src="./assets/imgs/giftribbon.png" />
-          <ion-card-header>
-            
-                <h6 color="primary">Gift card</h6>
-               
-           
-          
-           
-            
-          </ion-card-header>
+  <div *ngIf="DelivirdatabuttonClicked" type="text" value="" class="">
+    <ion-card>
+      <img class="image1" src="./assets/imgs/giftribbon.png" />
+      <ion-card-header>
+        <h6 color="primary">عنوان التوصيل</h6>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form [formGroup]="addressForm">
+          <ion-list no-line>
+
+            <ion-item class="colr">
+              <ion-label color="primary" floating>{{ 'COUNTRY' | translate }}</ion-label>
+              <ion-select formControlName="country" interface="popover" [(ngModel)]="cntry">
+                <ion-option *ngFor="let country of countriesList" (ionSelect)="getCities(country.id)" (ionSelect)="setCntryId(country.id)">{{country.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <span *ngIf="addressForm.controls['country'].hasError('required') && addressForm.controls['country'].touched">
+              <span [hidden]="!addressForm.controls['country'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+
+            <ion-item class="colr">
+              <ion-label color="primary" floating>{{ 'CITY' | translate }}</ion-label>
+              <ion-select formControlName="citye" interface="popover" [(ngModel)]="City">
+                <ion-option *ngFor="let city of citiesList" (ionSelect)="setCityid(city.id)">{{city.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <span *ngIf="addressForm.controls['citye'].hasError('required') && addressForm.controls['citye'].touched">
+              <span [hidden]="!addressForm.controls['citye'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+
+            <ion-item class="colr">
+              <ion-label color="primary" floating>{{'SIgNUP.address' | translate}}</ion-label>
+              <ion-input formControlName="street" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="addressForm.controls['street'].hasError('required') && addressForm.controls['street'].touched">
+              <span [hidden]="!addressForm.controls['street'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+
+            <ion-item class="colr">
+              <ion-label color="primary" floating>Buliding No</ion-label>
+              <ion-input formControlName="bulidingNo" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="addressForm.controls['bulidingNo'].hasError('required') && addressForm.controls['bulidingNo'].touched">
+              <span [hidden]="!addressForm.controls['bulidingNo'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
         
-          <ion-card-content>
-            <!-- Add card content here! -->
-          </ion-card-content>
+            <ion-item class="colr">
+              <ion-label color="primary" floating>Notes</ion-label>
+              <ion-input formControlName="notes" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="addressForm.controls['notes'].hasError('required') && addressForm.controls['notes'].touched">
+              <span [hidden]="!addressForm.controls['notes'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+
+            <ion-item class="colr">
+              <ion-label color="primary" floating>{{'SIgNUP.phone' | translate}}</ion-label>
+              <ion-input formControlName="phone" type="text"></ion-input>
+            </ion-item>
+            <span *ngIf="addressForm.controls['phone'].hasError('required') && addressForm.controls['phone'].touched">
+              <span [hidden]="!addressForm.controls['phone'].errors.required">
+                <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+              </span>
+            </span>
+          </ion-list>
         
-        </ion-card>
+        </form>
+
+
+
+      </ion-card-content>
+
+    </ion-card>
+
+
+    <ion-card>
+      <img class="image1" src="./assets/imgs/giftribbon.png" />
+      <ion-card-header>
+        <h6 color="primary">وقت التوصيل</h6>
+      </ion-card-header>
+    
+      <ion-card-content>
+          <!-- [localeStrings]="localeString" -->
+        <span ion-datepicker class="datepic"  [(value)]="localDate" [min]="minDate"  (ionChanged)="dateselected($event)" clear class="ScheduleDate">
+          <span> <ion-icon name="clipboard" item-left ></ion-icon> {{localDate | date}} &nbsp; &nbsp;  &nbsp;  &nbsp;  <span *ngIf="dayTimes.length !== 0">{{timeFrom | date: 'hh:mm a'}}   {{timeTo | date: 'hh:mm a'}}</span>  </span> 
+        </span>
+
+
+        
+        <div >
+            <ion-grid>
+                <ion-row>
+                  <ion-col class="timegrid" col-3 col-md-4 col-xl-3 *ngFor="let time of dayTimes" >
+                   
+                        <button class="timBtn" (click)="onTimeScSelected(time)" ion-button  clear>
+                            <div  class="product">
+                                <div>
+                                    {{ time.from | date: 'hh:mm a'  }}
+                                </div>
+                                <div>
+                                    {{time.to | date: 'hh:mm a' }}
+                                </div>
+                                  
+                              </div> 
+                        </button>
+                      
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+        </div>
+
+              
+
+
+
+            
+       
+      </ion-card-content>
+
+    </ion-card>
   </div>
 
+  <button class="giftcardbtn" ion-button color="primary" clear block (click)="giftButtonClick()">
+     كارت الاهداء
+    </button>
+    <div *ngIf="giftMessagebuttonClicked" type="text" value="" class="">
+      <ion-card>
+        <img class="image1" src="./assets/imgs/giftribbon.png" />
+        <ion-card-header>
+          <h6 color="primary">رسالة الاهداء</h6>
+        </ion-card-header>
+  
+        <ion-card-content>
+  
+        </ion-card-content>
+  
+      </ion-card>
+
+    </div>
 
 
 
@@ -95,16 +225,16 @@
 
 
 
-<div class="bg" *ngIf="relatedProducts.length !== 0" > 
-  <ion-list >
-    <ion-item no-lines class="trans">
+  <div class="bg" *ngIf="relatedProducts.length !== 0">
+    <ion-list>
+      <ion-item no-lines class="trans">
         <ion-label class="relatedhedder">
-            <h2 >{{'RELATEDP' | translate}}</h2>
+          <h2>{{'RELATEDP' | translate}}</h2>
         </ion-label>
-    </ion-item>
-     
-      <ion-item  width="100%" height="20%" color="white" no-lines *ngFor="let product of relatedProducts">
-        <ion-thumbnail class="photo-border"  item-start>
+      </ion-item>
+
+      <ion-item width="100%" height="20%" color="white" no-lines *ngFor="let product of relatedProducts">
+        <ion-thumbnail class="photo-border" item-start>
           <img *ngFor="let image of product.images" [src]="image.src">
         </ion-thumbnail>
         <h2>{{product.name}}</h2>

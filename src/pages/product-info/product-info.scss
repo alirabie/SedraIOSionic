@@ -137,4 +137,55 @@ page-product-info {
         display: block;
        
     }
+
+    .timegrid {
+        flex: 0 0 50%;
+        max-width: auto;
+        max-height: auto;
+        text-align: center;
+        color:white;
+       
+       
+      }
+
+      .times {
+        align-content: center;
+        position: relative;
+        text-align: center;
+        width: 50px;
+        height: 35px;
+        font-size: 9px;
+        color: black;
+        border: 2px solid peru;
+        box-shadow: 1px 1px 1px grey;
+      }
+
+      .timegrid{
+        background-color: white;
+        padding: 0px;
+        margin: 0px;
+        }
+
+        .product{
+            padding: 2px;
+        }
+      
+        .datepic{
+            align-items: center;
+        }
+
+
+        .timBtn{
+            align-content: center;
+            position: relative;
+            text-align: center;
+            width: 50px;
+            height: 35px;
+            font-size: 9px;
+            color: black;
+            border: 2px solid peru;
+            box-shadow: 1px 1px 1px grey;
+        }
+      
+    
 }

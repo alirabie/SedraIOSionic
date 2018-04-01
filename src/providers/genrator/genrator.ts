@@ -184,4 +184,10 @@ export class GenratorProvider {
     });
   }
 
+
+
+  getVendorSchadule(id){
+    return this.http.get(this.url+"api/vendors/schedule?VendorId="+id).map((res : Response)=>res.json());
+  }
+
 }
