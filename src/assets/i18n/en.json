@@ -59,6 +59,38 @@
         "donecreated":"Your Account has been Created successfully"
     },
 
+
+       "WEEKDAYS":{
+        "sat":"Sat",
+        "sun":"Sun",
+        "mon":"Mon",
+        "tue":"Tue",
+        "wed":"Wed",
+        "thr":"Thu",
+        "fri":"Fri"
+    },
+
+    "MONTHS":{
+        "jan" : "January",
+        "feb" : "February",
+        "mar" : "March",
+        "apr" : "April",
+        "may" : "May",
+        "jun" : "June",
+        "jul" : "July",
+        "aug" : "August",
+        "sep" : "September",
+        "oct" : "October",
+        "nov" : "November",
+        "dec" : "December"
+    },
+
+
+
+
+
+
+
     "LOADING" :"Please wait...",
     "LANG" :"Select App Language",
     "COUNTRY" : "Country",

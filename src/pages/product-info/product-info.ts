@@ -28,8 +28,29 @@ export class ProductInfoPage {
   public localeString = {
     monday: true,
     //Translate this later
-    weekdays: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
-    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    weekdays: [
+    
+    this.translate.instant('WEEKDAYS.mon'), 
+    this.translate.instant('WEEKDAYS.tue'),
+    this.translate.instant('WEEKDAYS.wed'), 
+    this.translate.instant('WEEKDAYS.thr'), 
+    this.translate.instant('WEEKDAYS.fri'),
+    this.translate.instant('WEEKDAYS.sat'),
+    this.translate.instant('WEEKDAYS.sun') ],
+
+    months: [
+      this.translate.instant('MONTHS.jan'),
+      this.translate.instant('MONTHS.feb'), 
+      this.translate.instant('MONTHS.mar'), 
+      this.translate.instant('MONTHS.apr'), 
+      this.translate.instant('MONTHS.may'), 
+      this.translate.instant('MONTHS.jun'), 
+      this.translate.instant('MONTHS.jul'), 
+      this.translate.instant('MONTHS.aug'), 
+      this.translate.instant('MONTHS.sep'), 
+      this.translate.instant('MONTHS.oct'), 
+      this.translate.instant('MONTHS.nov'), 
+      this.translate.instant('MONTHS.dec')]
   };
 
   vendorSchduals = [];

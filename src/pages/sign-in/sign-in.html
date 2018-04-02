@@ -10,25 +10,38 @@
 
 <ion-content padding>
 
+  <form [formGroup]="signIn" >
   <ion-list>
 
     <ion-item>
       <ion-label floating>{{ 'USER' | translate }}</ion-label>
-      <ion-input  [(ngModel)]="loginData.Email" required="true" type="text"></ion-input>
+      <ion-input formControlName="user" [(ngModel)]="loginData.Email" required="true" type="text"></ion-input>
     </ion-item>
+    <span *ngIf="signIn.controls['user'].hasError('required') && signIn.controls['user'].touched">
+      <span [hidden]="!signIn.controls['user'].errors.required">
+          <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+      </span>
+  </span>
   
     <ion-item>
       <ion-label floating>{{ 'PASS' | translate }}</ion-label>
-      <ion-input [(ngModel)]="loginData.Password" required="true" type="password"></ion-input>
+      <ion-input formControlName="password" [(ngModel)]="loginData.Password" required="true" type="password"></ion-input>
     </ion-item>
   </ion-list>
+  <span *ngIf="signIn.controls['password'].hasError('required') && signIn.controls['password'].touched">
+    <span [hidden]="!signIn.controls['password'].errors.required">
+        <ion-label style="color: red; margin-left: 16px;"> * </ion-label>
+    </span>
+</span>
 
-  <button ion-button block color="primary" (click)="doLogin()">{{ 'PAGE_TITLE.login' | translate }}</button>
+  <button ion-button block color="primary" (click)="doLogin()" [disabled]="!signIn.valid" >{{ 'PAGE_TITLE.login' | translate }}</button>
+
+</form>
 
   <div>
     <ion-row>
       <button class="btn1" ion-button color="light" clear (click)="signUp()">{{'donthaveaccount' | translate}}</button>
-      <button class="btn2" ion-button color="light" clear>{{'forgotpass' | translate}}</button>
+      <button class="btn2" ion-button color="light" clear (click)="forgotPass()" [disabled]="!signIn.valid" >{{'forgotpass' | translate}}</button>
     </ion-row>
   </div>
   

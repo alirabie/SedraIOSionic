@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SignUpPage } from '../sign-up/sign-up';
 import { IntroScreenPage } from '../intro-screen/intro-screen';
 import { Events } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @IonicPage()
@@ -19,6 +20,7 @@ export class SignInPage {
   loginData = { Email: '', Password: '' };
   data: any;
 
+  public signIn : FormGroup ;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -26,9 +28,13 @@ export class SignInPage {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private translate: TranslateService,
-    config: Config ,public events: Events ,public viewCtrl : ViewController) {
+    config: Config ,public events: Events ,public viewCtrl : ViewController , private _FB: FormBuilder) {
 
     config.set('ios', 'backButtonText', this.translate.instant('BUTTONS.back'));
+    this.signIn = _FB.group({
+      user: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
+      password : ['', Validators.compose([Validators.maxLength(20), Validators.required])]
+      });
 
   }
 
@@ -103,6 +109,13 @@ export class SignInPage {
   }
 
 
+
+
+  forgotPass(){
+
+    
+
+  }
 
 
 
