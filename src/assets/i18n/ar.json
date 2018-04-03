@@ -134,7 +134,13 @@
     "sender_phone_no":"رقم جوال المرسل",
     "deliverinfoerr":"بيانات التوصيل غير صحيحة",
     "timeinfoerr":"من فضلك إختر وقت وتاريخ التسليم",
-
+    "totalprice":"المجموع الكلى",
+    "placeorder":"إنشاء الطلب",
+    "decountcode":"كود كوبون الخصم",
+    "cartempty":"السلة فارغة من فضلك قم بملئها بالمنتجات اولا",
+    "apply":"تطبيق",
+    "update":"تحديث",
+    "ordercreated":"تم إنشاء طلبك بنجاح",
 
 
     "FOO": "Foo {{test}}"

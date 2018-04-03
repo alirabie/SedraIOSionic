@@ -1,5 +1,5 @@
 import { Component ,ViewChild  } from '@angular/core';
-import { Platform , Nav ,MenuController ,NavController } from 'ionic-angular';
+import { Platform , Nav ,MenuController ,NavController ,AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -34,7 +34,7 @@ export class MyApp {
     statusBar: StatusBar, 
     splashScreen: SplashScreen , 
     private translateService: TranslateService,
-    public menuCtrl: MenuController,public events: Events ) {
+    public menuCtrl: MenuController,public events: Events , public alertCtrl : AlertController ) {
 
 
       if (localStorage.getItem('customerid') === null){
@@ -86,7 +86,8 @@ export class MyApp {
 
   //Logout
   logout(){
-    localStorage.removeItem('customerid')
+    localStorage.removeItem('customerid');
+    localStorage.removeItem('customerdata');
     localStorage.setItem('cartCount',"");
     this.nav.setRoot(IntroScreenPage);
     this.menuCtrl.toggle();
@@ -111,7 +112,17 @@ export class MyApp {
     if (localStorage.getItem('customerid') === null) {
       this.nav.push(SignInPage);
       this.menuCtrl.toggle();
-    } else {
+    } else if (localStorage.getItem('cartCount')=='0') {
+
+      let alert = this.alertCtrl.create({
+        title: this.translateService.instant('PAGE_TITLE.dilog'),
+        subTitle: this.translateService.instant('cartempty'),
+        buttons: [this.translateService.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+
+      this.menuCtrl.toggle();
+    }else{
       this.nav.push(ShoppingCartPage);
       this.menuCtrl.toggle();
     }

@@ -27,13 +27,14 @@ export class ProfilePage {
   addr: any;
 
   cntry: string = "";
-  City: string = "";
+  state: string = "";
   district: string = "";
   countryid: any;
   cityId: any;
   _i: number;
   submitAttempt: boolean = false;
   public form : FormGroup;
+  data: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -75,7 +76,7 @@ export class ProfilePage {
   }
 
   getDistricts() {
-    return this.genrator.getDistructs(this.cntry, this.City).subscribe((data) => {
+    return this.genrator.getDistructs(this.cntry, this.state).subscribe((data) => {
       this.districtsList = data['districts'];
     });
   }
@@ -92,22 +93,86 @@ export class ProfilePage {
 
   //get Customer Info
   getCustomerInfo(){
-    this.genrator.getCustomerInfo(localStorage.getItem('customerid')).subscribe((data)=>{
+    let custdata = JSON.parse(localStorage.getItem('customerdata'));
 
-      this.customers=data['customers']
-     let customer = this.customers['0'];
-     this.email=customer.email;
-     this.fname=customer.first_name;
-     this.lname=customer.last_name;
+     this.email=custdata.billing_address.email;
+     this.fname=custdata.billing_address.first_name;
+     this.lname=custdata.billing_address.last_name;
+     this.phonenum=custdata.billing_address.phone_number;
+     this.cntry=custdata.billing_address.country;
+     this.countryid=custdata.billing_address.country_id;
+     this.state=custdata.billing_address.province;
+     this.cityId=custdata.billing_address.state_province_id;
+     this.district=custdata.billing_address.city;
+     this.addr=custdata.billing_address.address1;
+
+     this.getCities(this.countryid);
+     this.getDistricts();
+  
  
 
-    }),((err)=>{
-
-      console.log(err);
-    });
+ 
   }
 
 
 
+  SaveChanges(val){
+
+    let updatedData = {
+      customer:
+            {
+              role_ids:[3],
+              email: val.email+"",
+              password: val.password,
+              first_name: val.firstName,
+              last_name:val.lastname,
+              phone:val.phone,
+              verificationcode:"",
+              billing_address: {
+              first_name: val.firstName,
+              last_name: val.lastname,
+              email: val.email,
+              company: "Appsmatic Ltd",
+              country_id: this.countryid+"",
+              state_province_id: this.cityId+"",
+              province: val.citye,
+              city: val.districtt,
+              address1: val.addr,
+              phone_number: val.phone,
+              zip_postal_code: "10021"
+            }
+            }
+    }
+
+
+
+
+    console.log(updatedData);
+
+    let loader = this.loader.create({
+      content: this.translate.instant('LOADING'),
+    });
+    loader.present();
+
+    this.genrator.updateProfile(updatedData,localStorage.getItem('customerid')).then((data)=>{
+      console.log(data);
+      loader.dismiss();
+      if(data['customers']!=null){
+        this.data=data;
+        localStorage.setItem('customerdata',JSON.stringify(this.data.customers[0]));
+        this.navCtrl.popToRoot();
+      }
+
+    },(err)=>{
+      loader.dismiss();
+      let alert = this.alertCtrl.create({
+        title: this.translate.instant('PAGE_TITLE.dilog'),
+        subTitle: err,
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+    });
+
+  }
 
 }

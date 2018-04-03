@@ -86,6 +86,21 @@ export class GenratorProvider {
   }
 
 
+  updateProfile(credentials ,id) {
+    return new Promise((resolve, reject) => {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http.put(this.url+'api/customers/'+id, JSON.stringify(credentials), {headers: headers})
+          .subscribe(res => {
+            resolve(res.json());
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+
+  
+
 
   VerifyPhon(phoneNum){
     let headers = new Headers();
@@ -189,5 +204,25 @@ export class GenratorProvider {
   getVendorSchadule(id){
     return this.http.get(this.url+"api/vendors/schedule?VendorId="+id).map((res : Response)=>res.json());
   }
+
+
+
+
+  createOrder(credentials) {
+    return new Promise((resolve, reject) => {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http.post(this.url+'api/orders/', JSON.stringify(credentials), {headers: headers})
+          .subscribe(res => {
+            resolve(res.json());
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+
+
+
+
 
 }

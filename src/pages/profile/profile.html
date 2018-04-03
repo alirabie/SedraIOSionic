@@ -79,7 +79,7 @@
     
                   <ion-item class="colr">
                       <ion-label color="primary" floating>{{ 'COUNTRY' | translate }}</ion-label>
-                      <ion-select  formControlName="country" interface="popover" [(ngModel)]="cntry">
+                      <ion-select   formControlName="country" interface="popover" [(ngModel)]="cntry">
                           <ion-option *ngFor="let country of countriesList" (ionSelect)="getCities(country.id)" (ionSelect)="setCntryId(country.id)">{{country.name}}</ion-option>
                         </ion-select>
                     </ion-item>
@@ -91,7 +91,7 @@
     
                     <ion-item class="colr">
                         <ion-label color="primary" floating>{{ 'CITY' | translate }}</ion-label>
-                        <ion-select formControlName="citye" interface="popover" [(ngModel)]="City">
+                        <ion-select formControlName="citye" interface="popover" [(ngModel)]="state">
                             <ion-option *ngFor="let city of citiesList" (ionSelect)="getDistricts()" (ionSelect)="setCityid(city.id)">{{city.name}}</ion-option>
                           </ion-select>
                       </ion-item>
@@ -129,7 +129,7 @@
         </ion-list>
         <div>
           <button ion-button color="primary" [disabled]="!form.valid" block>
-            <span class="fontColor">{{'SIgNUP.cont' | translate}}</span>
+            <span class="fontColor">{{'update' | translate}}</span>
           </button>
         </div>
       </form>

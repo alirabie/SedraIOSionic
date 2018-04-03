@@ -68,6 +68,7 @@ export class SignInPage {
 
         this.events.publish('user:login');
         localStorage.setItem('customerid', this.data.customers[0].id);
+        localStorage.setItem('customerdata',JSON.stringify(this.data.customers[0]));
         //Update Shopping cart Badge
         this.getShoppingCartCount(localStorage.getItem('customerid'));
 

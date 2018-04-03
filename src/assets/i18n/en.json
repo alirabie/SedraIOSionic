@@ -138,6 +138,13 @@
     "sender_phone_no":"Sender Phone No",
     "deliverinfoerr":"Deliver Info Not Correct",
     "timeinfoerr":"Please Select Deliver Date and Time",
+    "totalprice":"Total Price",
+    "placeorder":"Create Order",
+    "decountcode":"Discount Coupon",
+    "apply":"Apply",
+    "cartempty":"Cart Empty , Please fill Shopping Cart first",
+    "update":"Update",
     "FOO": "Foo {{test}}",
+    "ordercreated":"Your Order has been Created Successfully",
     "about":"Sedra is an e-shop consists of four sections the first for Flowers, the second for the various gifts, the third for chocolates and cakes, the fourth for seedlings and the ornamental trees"
 }

@@ -76,10 +76,19 @@ export class PlantsPage {
   goShoppingCartPage() {
     if (localStorage.getItem("customerid") === null) {
       this.navCtrl.push(SignInPage);
-    } else {
+    } else if (localStorage.getItem('cartCount')=='0') {
+
+      let alert = this.alertCtrl.create({
+        title: this.translate.instant('PAGE_TITLE.dilog'),
+        subTitle: this.translate.instant('cartempty'),
+        buttons: [this.translate.instant('BUTTONS.dissmiss')]
+      });
+      alert.present();
+
+    }else
       this.navCtrl.push(ShoppingCartPage);
     }
-  }
+  
 
 
 }

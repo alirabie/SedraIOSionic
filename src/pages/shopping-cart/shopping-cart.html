@@ -1,4 +1,3 @@
-
 <ion-header>
 
   <ion-navbar color="primary">
@@ -9,16 +8,50 @@
 
 
 <ion-content >
+  <div class="cartItems">
     <ion-label class="lbl" *ngIf="cartItemsList.length === 0">{{ 'EMPTY' | translate }}</ion-label>
-  <ion-list>
-    <ion-item *ngFor="let item of cartItemsList">
-      <ion-thumbnail item-start>
-        <img src="./assets/imgs/imagesize.png">
-      </ion-thumbnail>
-      <h2>{{item.product.name}} </h2>
-      <p>{{item.product.price*item.quantity}} SR</p>
-      <button ion-button clear item-end (click)="delItem(item.id)">{{ 'DEL' | translate }}</button>
-      #{{item.quantity}}
-    </ion-item>
-  </ion-list>
+    <ion-list>
+      <ion-item no-lines *ngFor="let item of cartItemsList">
+        <ion-thumbnail item-start>
+          <img src="./assets/imgs/imagesize.png">
+        </ion-thumbnail>
+        <h2>{{item.product.name}} </h2>
+        <p>{{item.product.price*item.quantity}} SR</p>
+        <button ion-button clear item-end (click)="delItem(item.id)">{{ 'DEL' | translate }}</button>
+        #{{item.quantity}}
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <br>
+  
+
+  <div class="row">
+      <div class="column">
+          <ion-item  no-lines>
+              <h4 class="pricelbl">{{'totalprice' | translate}}</h4> 
+              <h6 class="price">1000 SAR</h6> 
+            </ion-item>
+      </div>
+      <div class="column">
+      
+        <div class="totalprice">
+          <ion-item no-lines>
+              <ion-input placeholder="{{'decountcode' | translate}}"></ion-input>
+          </ion-item>
+            <button ion-button small outline >{{'apply' | translate}}</button>
+        </div>
+             
+      </div>
+
+      <button ion-button block rounded (click)="placeorder()">{{'placeorder' | translate}}</button>
+    </div> 
+
+
+
+
+
+
+ 
 </ion-content>
