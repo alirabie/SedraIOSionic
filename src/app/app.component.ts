@@ -88,7 +88,7 @@ export class MyApp {
   logout(){
     localStorage.removeItem('customerid');
     localStorage.removeItem('customerdata');
-    localStorage.setItem('cartCount',"");
+    localStorage.setItem('cartCount',"0");
     this.nav.setRoot(IntroScreenPage);
     this.menuCtrl.toggle();
     this.loggedOut=true;

@@ -88,7 +88,8 @@ export class ShoppingCartPage {
         let obj = this.cartItemsList[i];
         let item = {
           product_id: obj.product.id,
-          quantity: obj.quantity
+          quantity: obj.quantity,
+          shopping_cart_item_id : obj.id
         }
         cartItems.push(item)
       }
@@ -123,9 +124,9 @@ export class ShoppingCartPage {
       });
       loader.present();
       this.genrator.createOrder(order).then((data)=>{
-
+        loader.dismiss();
         if(data['orders']!=null){
-          loader.dismiss();
+          localStorage.setItem('cartCount',"0");
           this.navCtrl.popToRoot();
           console.log(data);
           let alert = this.alertCtrl.create({

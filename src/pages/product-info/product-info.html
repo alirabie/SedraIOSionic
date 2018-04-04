@@ -165,7 +165,7 @@
        
         <span ion-datepicker class="datepic" [(value)]="localDate" [min]="minDate" [localeStrings]="localeString" (ionChanged)="dateselected($event)" clear class="ScheduleDate">
           <span>
-            <ion-icon name="clipboard" item-left></ion-icon> {{localDate | date}} &nbsp; &nbsp; &nbsp; &nbsp;
+            <ion-icon name="clipboard" item-left></ion-icon> {{localDate | date }} &nbsp; &nbsp; &nbsp; &nbsp;
             <span *ngIf="dayTimes.length !== 0">{{timeFrom | date: 'hh:mm a'}} {{timeTo | date: 'hh:mm a'}}</span>
           </span>
         </span>

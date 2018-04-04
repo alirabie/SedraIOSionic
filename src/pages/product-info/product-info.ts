@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Config } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Config , LoadingController  } from 'ionic-angular';
 import { GenratorProvider } from '../../providers/genrator/genrator'
 import { TranslateService } from '@ngx-translate/core';
 import { SignInPage } from '../sign-in/sign-in'
@@ -122,7 +122,8 @@ export class ProductInfoPage {
     private translate: TranslateService,
     config: Config,
     public SocialSharing: SocialSharing,
-    private _FB: FormBuilder) {
+    private _FB: FormBuilder,
+    public loadingCtrl : LoadingController) {
 
 
 
@@ -312,49 +313,26 @@ export class ProductInfoPage {
         cartItem.shopping_cart_item.product_id = this.id + "";
         cartItem.shopping_cart_item.customer_id = localStorage.getItem("customerid");
 
+        let loader = this.loadingCtrl.create({
+          content: this.translate.instant('LOADING'),
+        });
+        loader.present();
+
         this.genrator.addToShoppingCart(cartItem).then((result) => {
 
+          loader.dismiss();
           if (result['shopping_carts'] != null) {
-
-
-
-            //Add Presnt Card using cart Item ID
-            this.addPresnetCard(0);
-
-
-
-
-
-            this.getShoppingCartCount(localStorage.getItem("customerid"));
-            let alert = this.alertCtrl.create({
-              title: this.translate.instant('PAGE_TITLE.dilog'),
-              subTitle: this.translate.instant('ADEDD'),
-              buttons: [
-                {
-                  text: this.translate.instant('CONTINE'),
-                  handler: () => {
-                    //ٌResume Shopping
-                    this.navCtrl.popTo(TabsPage);
-
-                    console.log(localStorage.getItem("cartCount"))
-                  }
-                },
-                {
-                  text: this.translate.instant('END'),
-                  handler: () => {
-
-                    //Go to shopping cart
-                    this.navCtrl.push(ShoppingCartPage);
-                  }
-                }
-              ]
-            });
-            alert.present();
-
             console.log(result);
+            let cartItems=result['shopping_carts'];
+            let cartItem = cartItems['0'];
+            //Add Presnt Card using cart Item ID
+            this.addPresnetCard(cartItem.id+"");
+
+          
           }
 
         }, (err) => {
+          loader.dismiss();
 
           console.log(err);
 
@@ -396,19 +374,16 @@ export class ProductInfoPage {
 
   dateselected(data) {
     let s: string = data;
-    let selectedDate = new Date(s);
+    let selectedDat = new Date(s);
     this.timeFrom ="";
     this.timeTo="";
     this.schadulId="";
 
-    this.day = selectedDate.getDay();
-    this.selectedDate = data;
-
+    this.day = selectedDat.getDay();
     console.log(this.day);
+    this.selectedDate = new Date(selectedDat.getTime()-selectedDat.getTimezoneOffset()*60000).toISOString();
     console.log(this.selectedDate);
     this.getTimesByDay(this.day);
-
-
   }
 
 
@@ -481,6 +456,50 @@ export class ProductInfoPage {
     
        //Fire Add present card sevice
        console.log(presntCard);
+       let loader = this.loadingCtrl.create({
+        content: this.translate.instant('LOADING'),
+      });
+      loader.present();
+       this.genrator.addPresntCard(presntCard).then((presentcardres)=>{
+
+        loader.dismiss();
+
+        this.getShoppingCartCount(localStorage.getItem("customerid"));
+        let alert = this.alertCtrl.create({
+          title: this.translate.instant('PAGE_TITLE.dilog'),
+          subTitle: this.translate.instant('ADEDD'),
+          buttons: [
+            {
+              text: this.translate.instant('CONTINE'),
+              handler: () => {
+                //ٌResume Shopping
+                this.navCtrl.popTo(TabsPage);
+
+                console.log(localStorage.getItem("cartCount"))
+              }
+            },
+            {
+              text: this.translate.instant('END'),
+              handler: () => {
+
+                //Go to shopping cart
+                this.navCtrl.push(ShoppingCartPage);
+              }
+            }
+          ]
+        });
+        alert.present();
+
+
+        console.log(presentcardres);
+
+       },(err)=>{
+
+        loader.dismiss();
+
+        console.log(err);
+
+       });
 
     }else{
 
@@ -506,7 +525,7 @@ export class ProductInfoPage {
                    delivery_date : this.selectedDate+"",
                    schedule_id : this.schadulId+""
                 },
-                 cart_item_id : "",
+                 cart_item_id : cartItemid+"",
                  order_id : null,
                  customer_id : localStorage.getItem('customerid')+""
               }
@@ -516,14 +535,51 @@ export class ProductInfoPage {
          }
     
       
-         console.log(presntCard);
+        //Fire Add present card sevice
+        console.log(presntCard);
+        let loader = this.loadingCtrl.create({
+          content: this.translate.instant('LOADING'),
+        });
+        loader.present();
+        this.genrator.addPresntCard(presntCard).then((presentcardres)=>{
+ 
+          loader.dismiss();
+         this.getShoppingCartCount(localStorage.getItem("customerid"));
+         let alert = this.alertCtrl.create({
+           title: this.translate.instant('PAGE_TITLE.dilog'),
+           subTitle: this.translate.instant('ADEDD'),
+           buttons: [
+             {
+               text: this.translate.instant('CONTINE'),
+               handler: () => {
+                 //ٌResume Shopping
+                 this.navCtrl.popTo(TabsPage);
+ 
+                 console.log(localStorage.getItem("cartCount"))
+               }
+             },
+             {
+               text: this.translate.instant('END'),
+               handler: () => {
+ 
+                 //Go to shopping cart
+                 this.navCtrl.push(ShoppingCartPage);
+               }
+             }
+           ]
+         });
+         alert.present();
+ 
+ 
+         console.log(presentcardres);
+ 
+        },(err)=>{
+          loader.dismiss();
+ 
+         console.log(err);
+ 
+        });
   
-
-
-
-
-
-
 
     }
   
