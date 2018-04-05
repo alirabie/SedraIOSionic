@@ -142,7 +142,7 @@ export class ProductInfoPage {
       phone: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
       street: ['', Validators.compose([Validators.maxLength(50), Validators.required])],
       bulidingNo: ['', Validators.compose([Validators.maxLength(20), Validators.required])],
-      notes: ['', Validators.compose([Validators.maxLength(20), Validators.required])]
+      notes: ['', Validators.compose([Validators.maxLength(200)])]
     });
 
 
@@ -359,7 +359,7 @@ export class ProductInfoPage {
     this.genrator.getVendorSchadule(obj.vendor_id).subscribe((data) => {
 
       this.vendorSchduals = data['deliveryschedules'];
-      console.log(data['deliveryschedules']);
+     // console.log(data['deliveryschedules']);
 
     });
 

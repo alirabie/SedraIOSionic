@@ -13,6 +13,7 @@ import { GenratorProvider } from '../../providers/genrator/genrator'
 export class ShoppingCartPage {
 
   cartItemsList = [];
+  approverules : boolean =false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -24,6 +25,8 @@ export class ShoppingCartPage {
 
     config.set('ios', 'backButtonText', this.translate.instant('BUTTONS.back'));
     this.getCartItems();
+
+    console.log(this.approverules);
   }
 
   ionViewDidLoad() {
@@ -70,8 +73,15 @@ export class ShoppingCartPage {
 
 
 
+  rulesAccepted(e:any){
+    this.approverules=e.checked;
+    console.log(this.approverules);
+  }
+
 
   placeorder() {
+
+   
 
     if (this.cartItemsList.length == 0) {
       let alert = this.alertCtrl.create({
@@ -118,11 +128,14 @@ export class ShoppingCartPage {
           }
       }
 
-      console.log(order);
-      let loader = this.loader.create({
-        content: this.translate.instant('LOADING'),
-      });
-      loader.present();
+     
+
+      if(this.approverules){
+        console.log(order);
+        let loader = this.loader.create({
+          content: this.translate.instant('LOADING'),
+        });
+        loader.present();
       this.genrator.createOrder(order).then((data)=>{
         loader.dismiss();
         if(data['orders']!=null){
@@ -150,6 +163,18 @@ export class ShoppingCartPage {
       
       alert.present();
       });
+
+    }else{
+
+ let alert = this.alertCtrl.create({
+          title: this.translate.instant('PAGE_TITLE.dilog'),
+          subTitle:this.translate.instant('accetptplease') ,
+          buttons: [this.translate.instant('BUTTONS.dissmiss')]
+        });
+      
+      alert.present();
+
     }
+  }
   }
 }

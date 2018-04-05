@@ -54,9 +54,9 @@
 
       </ion-col>
 
-      <button class="cartbutton2" ion-button icon-only (click)="addToCart()">
+      <!-- <button class="cartbutton2" ion-button icon-only (click)="addToCart()">
         <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
-      </button>
+      </button> -->
     </ion-row>
 
   </div>
@@ -166,9 +166,12 @@
         <span ion-datepicker class="datepic" [(value)]="localDate" [min]="minDate" [localeStrings]="localeString" (ionChanged)="dateselected($event)" clear class="ScheduleDate">
           <span>
             <ion-icon name="clipboard" item-left></ion-icon> {{localDate | date }} &nbsp; &nbsp; &nbsp; &nbsp;
-            <span *ngIf="dayTimes.length !== 0">{{timeFrom | date: 'hh:mm a'}} {{timeTo | date: 'hh:mm a'}}</span>
+            <span *ngIf="dayTimes.length !== 0">{{timeFrom | date: 'hh:mm a' }} {{timeTo | date: 'hh:mm a'}}</span>
           </span>
         </span>
+
+
+
 
 
 
@@ -180,10 +183,10 @@
                 <button class="timBtn" (click)="onTimeScSelected(time)" ion-button clear>
                   <div class="product">
                     <div>
-                      {{ time.from | date: 'hh:mm a' }}
+                      {{ time.from | date : 'hh:mm a' }}
                     </div>
                     <div>
-                      {{time.to | date: 'hh:mm a' }}
+                      {{time.to | date : 'hh:mm a' }}
                     </div>
 
                   </div>
@@ -270,6 +273,11 @@
   </div>
 
 
+  <button ion-button round block (click)="addToCart()">
+    <ion-icon name="cart" ></ion-icon>
+    &nbsp; &nbsp;
+   {{'addtocart' | translate}}
+  </button>
 
 
 
