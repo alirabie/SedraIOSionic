@@ -17,6 +17,7 @@ import { SignInPage } from '../sign-in/sign-in';
 })
 export class HomePage {
   public productsList = [];
+  public searchResult =[];
   public countriesList = [];
   public citiesList = [];
   public districtsList = [];
@@ -146,6 +147,16 @@ export class HomePage {
       loader.dismiss();
 
     });
+  }
+
+ 
+  
+
+  onCancel(){
+     this.searchResult=[];
+      this.getProducts();
+     
+    
   }
 
 

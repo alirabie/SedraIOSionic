@@ -22,7 +22,7 @@ export class SettingsPage {
   onChange(e) {
     this.trans.use(e);
 
-    localStorage.setItem('lang',e);
+    localStorage.setItem('lang',e+"");
     this.navCtrl.pop();
 }
 }

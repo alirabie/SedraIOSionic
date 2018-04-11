@@ -1,13 +1,21 @@
 <ion-content class="background" padding>
 
        
-    <div class="lang">
-        <ion-select color="white"  placeholder="{{ 'LANG' | translate }}" [(ngModel)]="language" interface="action-sheet" (ionChange)="onChange($event)">
-            <ion-option value="ar">عربي</ion-option>
-            <ion-option value="en">English</ion-option>
-        </ion-select>
-    </div>
+     <div class="lang">
+        <h6>{{ 'LANG' | translate }}</h6>
+    <ion-segment (ionChange)="onChange($event)" color="wite">
+        <ion-segment-button value="ar">
+            عربي
+        </ion-segment-button>
+        <ion-segment-button value="en">
+            English
+        </ion-segment-button>
+      </ion-segment>
+    </div> 
 
+    
+
+   
 
 
 

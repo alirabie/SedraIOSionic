@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController, SegmentButton } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs'
 import { SignInPage } from '../sign-in/sign-in'
 import { SignUpPage } from '../sign-up/sign-up'
@@ -67,9 +67,9 @@ export class IntroScreenPage {
 
   }
 
-  onChange(e) {
-    this.translate.use(e);
-    localStorage.setItem('lang',e);
+  onChange(segmentButton : SegmentButton) {
+    this.translate.use(segmentButton.value);
+    localStorage.setItem('lang',segmentButton.value+"");
   }
 
 

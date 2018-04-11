@@ -23,12 +23,10 @@
 
   </ion-navbar>
 
-  <ion-searchbar placeholder="{{'search' | translate}}" color="primary" [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel"
-    (ionInput)="filter()" (ionCancel)="onCancel($event)">
+  <ion-searchbar placeholder="{{'search' | translate}}" color="primary" [(ngModel)]="myInput" debounce=5000   autocomplete="on"  autocorrect="on" [showCancelButton]="shouldShowCancel"
+    (ionInput)="filter()" (ionCancel)="onCancel()">
   </ion-searchbar>
-
-
-
+  
 
 
 
